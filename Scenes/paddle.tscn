@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://d58y3qb4qpv1"]
+
+[ext_resource type="Script" path="res://Scripts/paddle.gd" id="1_oa01h"]
+[ext_resource type="Texture2D" uid="uid://dptt0jms3irhg" path="res://Base Assets/Tank-Sheet.png" id="1_rcbhb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elj56"]
+atlas = ExtResource("1_rcbhb")
+region = Rect2(0, 0, 112, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kmfo"]
+atlas = ExtResource("1_rcbhb")
+region = Rect2(112, 0, 112, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ypibt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elj56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kmfo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6u21"]
+size = Vector2(96, 26)
+
+[node name="Paddle" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_oa01h")
+
+[node name="AnimatedSpite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ypibt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x6u21")
