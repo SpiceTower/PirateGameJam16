@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvm3xjlg1v6la"]
+
+[ext_resource type="Script" path="res://Scripts/button_brick.gd" id="1_s6etg"]
+[ext_resource type="Texture2D" uid="uid://b6b2sm8nymkq7" path="res://Base Assets/Button Brick 1.png" id="2_fwtq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_en7ay"]
+size = Vector2(108, 60)
+
+[node name="ButtonBrick" type="RigidBody2D"]
+collision_layer = 8
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+script = ExtResource("1_s6etg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fwtq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_en7ay")

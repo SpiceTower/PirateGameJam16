@@ -34,10 +34,10 @@ func _physics_process(delta): #manages all movement of the ball, currently can o
 		return
 		
 	var collider = collision.get_collider()
-	if collider is BrickBrick:
+	if collider is Brick:
 		collider.decrease_level()
 	
-	if (collider is BrickBrick or collider is Paddle):
+	if (collider is Brick or collider is Paddle):
 		ball_collision(collider)
 	else:
 		velocity = velocity.bounce(collision.get_normal())
@@ -107,7 +107,7 @@ func ball_collision(collider):
 	
 	new_velocity.x = velocity_xy * collision_x
 	
-	if collider.get_rid() == last_collider_id && collider is BrickBrick:
+	if collider.get_rid() == last_collider_id && collider is Brick:
 		new_velocity.x = new_velocity.rotated(deg_to_rad(randf_range(-45,45))).x *10
 	else:
 		last_collider_id == collider.get_rid()

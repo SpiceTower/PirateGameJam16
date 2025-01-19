@@ -1,5 +1,8 @@
 extends Node
 
+#No longer relevent - use BrickSpawner
+
+
 #currently connected spawner. This has been modified to only spawn 'brick' tier bricks with no variation. 
 #not sure how to make this spawn all of the brick types without extensive rewrites. We may want to manually spawn bricks anyways. 
 

@@ -7,6 +7,7 @@ class_name Brick
 signal brick_destroyed
 
 var level = 1
+var buttonbrick : bool = false
 
 @onready var sprite_2d = $Sprite2D
 @onready var collision_shape_2d = $CollisionShape2D
@@ -33,6 +34,8 @@ func set_level(new_level: int):
 func decrease_level():
 	if level > 1:
 		set_level(level - 1)
+	elif level == 1 and buttonbrick == true:
+		pass
 	else:
 		fade_out()
 
