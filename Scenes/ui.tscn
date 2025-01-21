@@ -23,13 +23,13 @@ theme_override_constants/margin_bottom = 16
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="LifesLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="LivesLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_k0o35")
 theme_override_font_sizes/font_size = 42
-text = "Lifes: 3"
+text = "Lives: 3"
 
 [node name="BoostReady" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
