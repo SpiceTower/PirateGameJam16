@@ -7,7 +7,7 @@ signal life_lost #connected to the death_zone node
 const VELOCITY_LIMIT = 40 #I'm not certain this does anything
 
 @export var ball_speed = 20
-@export var lifes = 3
+@export var lives = 3
 @export var death_zone : DeathZone
 @export var ui : UI
 @export var boost = 30
@@ -22,7 +22,7 @@ var boost_ready : bool = true
 
 
 func _ready():
-	ui.set_lifes(lifes)
+	ui.set_lives(lives)
 	start_postion = position
 	death_zone.life_lost.connect(on_life_lost)
 	animated_sprite_2d.play("default")
@@ -77,13 +77,13 @@ func start_ball():
 	velocity = Vector2(randf_range(-1, 1), randf_range(-.1, -1)).normalized() *ball_speed
 
 func on_life_lost():
-	lifes -= 1
-	if lifes == 0 :
+	lives -= 1
+	if lives == 0 :
 		ui.game_over()
 	else:
 		life_lost.emit()
 		reset_ball()
-		ui.set_lifes(lifes)
+		ui.set_lives(lives)
 
 #after the ball is lost, this is will reset the ball to the spawn position. If we change the default we will need to consider this too
 func reset_ball():

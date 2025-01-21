@@ -2,12 +2,12 @@ extends CanvasLayer
 
 class_name UI
 
-@onready var lifes_label = %LifesLabel
+@onready var lives_label = %LivesLabel
 @onready var game_lost_container = $GameLostContainer
 @onready var boost_ready = $MarginContainer/HBoxContainer/BoostReady
 
-func set_lifes(lifes: int):
-	lifes_label.text = "Lifes: %d" % lifes
+func set_lives(lives: int):
+	lives_label.text = "Lives: %d" % lives
 
 func set_boost(boost: bool):
 	if boost == true:
