@@ -51,3 +51,6 @@ func destroy():
 
 func get_width():
 	return get_size().x
+
+func get_height():
+	return get_size().y
