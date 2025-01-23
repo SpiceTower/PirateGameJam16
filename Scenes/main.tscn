@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgcprsl5emin7"]
+[gd_scene load_steps=15 format=3 uid="uid://bgcprsl5emin7"]
 
 [ext_resource type="PackedScene" uid="uid://d58y3qb4qpv1" path="res://Scenes/paddle.tscn" id="1_oi70r"]
 [ext_resource type="PackedScene" uid="uid://bivm5gnaegrgl" path="res://Scenes/B411.tscn" id="2_yiv7u"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cvm3xjlg1v6la" path="res://Scenes/button_brick.tscn" id="9_wnrq1"]
 [ext_resource type="PackedScene" uid="uid://bk3jfvb1lrasx" path="res://Scenes/glass_brick.tscn" id="11_t758k"]
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="12_q3del"]
+[ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="13_ujqt5"]
+[ext_resource type="Script" path="res://Scenes/level_music.gd" id="14_p5f26"]
 
 [node name="Main" type="Node"]
 
@@ -72,3 +74,11 @@ position = Vector2(-503, 39)
 
 [node name="Military Brick" parent="." instance=ExtResource("12_q3del")]
 position = Vector2(517, -234)
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ujqt5")
+volume_db = -12.0
+parameters/looping = true
+script = ExtResource("14_p5f26")
+
+[connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
