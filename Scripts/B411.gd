@@ -4,7 +4,7 @@ class_name Ball
 
 signal life_lost #connected to the death_zone node
 
-const VELOCITY_LIMIT = 40 #I'm not certain this does anything
+const VELOCITY_LIMIT = 40 #The upper bound for speed for the ball
 
 @export var ball_speed = 20
 @export var lives = 3
@@ -30,24 +30,17 @@ func _ready():
 func _physics_process(delta: float) -> void: #manages all movement of the ball, currently can only be connected to a single kind of brick (BrickBrick) 
 	ui.set_boost(boost_ready)
 	var collision = move_and_collide(velocity * ball_speed * delta)
-	if collision: 
-		var collider = collision.get_collider()
-		if collider is Brick:
-			collider.decrease_level()
-		#if collider is Paddle:
-		if collider is Brick or collider is Paddle:
-			ball_collision(collision, collider)
-		else:
-			velocity = velocity.bounce(collision.get_normal())
-		#if (velocity.y > 0 and velocity.y < 1):
-			#velocity.y = -2
+	if !collision: 
+		return
 		
-		#if velocity.x == 0:
-			#velocity.x -2
+	var collider = collision.get_collider()
+	if collider is Brick:
+		collider.decrease_level()
 		
-		#var speed_multiplier = speed_up_factor if collider is Paddle else 1
-		
-		#velocity = (velocity * speed_multiplier).limit_length(VELOCITY_LIMIT)
+	if collider is Brick or collider is Paddle:
+		ball_collision(collision, collider)
+	else:
+		velocity = velocity.bounce(collision.get_normal())
 		
 
 #attempting to add player input to effect the ball
@@ -127,7 +120,6 @@ func ball_collision(collision, collider):
 		new_velocity.y = sqrt(absf(velocity_xy * velocity_xy - new_velocity.x * new_velocity.x)) * (-1 if velocity.y > 0 else 1)
 	elif collider is Brick:
 		new_velocity.y = velocity_xy * collision_y
-		#new_velocity.y = velocity.bounce(collision.get_normal()).y
 	
 	var speed_multiplier = speed_up_factor if collider is Paddle else 1
 	
