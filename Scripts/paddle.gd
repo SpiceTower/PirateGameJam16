@@ -74,3 +74,9 @@ func on_ball_lost():
 
 func get_width():
 	return collision_shape_2d.shape.get_rect().size.x
+
+func get_height():
+	return collision_shape_2d.shape.get_rect().size.y
+
+func get_velocity():
+	return linear_velocity

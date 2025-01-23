@@ -4,7 +4,7 @@ class_name Ball
 
 signal life_lost #connected to the death_zone node
 
-const VELOCITY_LIMIT = 40 #I'm not certain this does anything
+const VELOCITY_LIMIT = 40 #The upper bound for speed for the ball
 
 @export var ball_speed = 20
 @export var lives = 3
@@ -27,20 +27,21 @@ func _ready():
 	death_zone.life_lost.connect(on_life_lost)
 	animated_sprite_2d.play("default")
 
-func _physics_process(delta): #manages all movement of the ball, currently can only be connected to a single kind of brick (BrickBrick) 
+func _physics_process(delta: float) -> void: #manages all movement of the ball, currently can only be connected to a single kind of brick (BrickBrick) 
 	ui.set_boost(boost_ready)
 	var collision = move_and_collide(velocity * ball_speed * delta)
-	if(!collision):
+	if !collision: 
 		return
 		
 	var collider = collision.get_collider()
 	if collider is Brick:
 		collider.decrease_level()
-	
-	if (collider is Brick or collider is Paddle):
-		ball_collision(collider)
+		
+	if collider is Brick or collider is Paddle:
+		ball_collision(collision, collider)
 	else:
 		velocity = velocity.bounce(collision.get_normal())
+		
 
 #attempting to add player input to effect the ball
 func _input(event):
@@ -74,7 +75,7 @@ func start_ball():
 	position = start_postion
 	randomize()
 	
-	velocity = Vector2(randf_range(-1, 1), randf_range(-.1, -1)).normalized() *ball_speed
+	velocity = Vector2(randf_range(-1, 1), randf_range(-.1, -1)).normalized() * ball_speed
 
 func on_life_lost():
 	lives -= 1
@@ -92,27 +93,33 @@ func reset_ball():
 
 # This obnoxious bit of code is to create variation in the ball bounces. It speeds up the ball when it hits bricks/paddle and makes the bounce direction
 #- contingent on where the ball hits the paddle or brick. Good to have, stupid to look at. 
-func ball_collision(collider):
+func ball_collision(collision, collider):
 	
-	var ball_width = collision_shape_2d.shape.get_rect().size.x
 	var ball_center_x = position.x
 	var collider_width = collider.get_width()
 	var collider_center_x = collider.position.x
+	var collision_x = (ball_center_x - collider_center_x) / (collider_width / 2)
+	
+	var ball_center_y = position.y
+	var collider_height = collider.get_height()
+	var collider_center_y = collider.position.y
+	var collision_y = (ball_center_y - collider_center_y) / (collider_height / 2)
 	
 	var velocity_xy = velocity.length()
-	
-	var collision_x = (ball_center_x - collider_center_x) / (collider_width / 2)
 	
 	var new_velocity = Vector2.ZERO
 	
 	new_velocity.x = velocity_xy * collision_x
 	
 	if collider.get_rid() == last_collider_id && collider is Brick:
-		new_velocity.x = new_velocity.rotated(deg_to_rad(randf_range(-45,45))).x *10
+		new_velocity.x = new_velocity.rotated(deg_to_rad(randf_range(-45,45))).x * 10
 	else:
 		last_collider_id == collider.get_rid()
 	
-	new_velocity.y = sqrt(absf(velocity_xy * velocity_xy - new_velocity.x * new_velocity.x)) *(-1 if velocity.y > 0 else 1)
+	if collider is Paddle:
+		new_velocity.y = sqrt(absf(velocity_xy * velocity_xy - new_velocity.x * new_velocity.x)) * (-1 if velocity.y > 0 else 1)
+	elif collider is Brick:
+		new_velocity.y = velocity_xy * collision_y
 	
 	var speed_multiplier = speed_up_factor if collider is Paddle else 1
 	
