@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgcprsl5emin7"]
+[gd_scene load_steps=14 format=3 uid="uid://bgcprsl5emin7"]
 
 [ext_resource type="PackedScene" uid="uid://d58y3qb4qpv1" path="res://Scenes/paddle.tscn" id="1_oi70r"]
 [ext_resource type="PackedScene" uid="uid://bivm5gnaegrgl" path="res://Scenes/B411.tscn" id="2_yiv7u"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cvm3xjlg1v6la" path="res://Scenes/button_brick.tscn" id="9_wnrq1"]
 [ext_resource type="PackedScene" uid="uid://bk3jfvb1lrasx" path="res://Scenes/glass_brick.tscn" id="11_t758k"]
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="12_q3del"]
+[ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="13_2w47j"]
 
 [node name="Main" type="Node"]
 
@@ -72,3 +73,7 @@ position = Vector2(-503, 39)
 
 [node name="Military Brick" parent="." instance=ExtResource("12_q3del")]
 position = Vector2(517, -234)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_2w47j")]

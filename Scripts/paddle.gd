@@ -64,7 +64,7 @@ func _input(event):
 		# this bit of code is what tells the ball to start moving when the game starts or resets.
 #	if direction != Vector2.ZERO && !is_ball_started:
 	
-	if Input.is_action_pressed("Start") and ball.velocity == Vector2.ZERO:
+	if Input.is_action_just_pressed("Start") and ball.velocity == Vector2.ZERO:
 		ball.start_ball()
 		is_ball_started = true
 
