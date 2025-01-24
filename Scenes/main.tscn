@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgcprsl5emin7"]
+[gd_scene load_steps=32 format=3 uid="uid://bgcprsl5emin7"]
 
 [ext_resource type="PackedScene" uid="uid://d58y3qb4qpv1" path="res://Scenes/paddle.tscn" id="1_oi70r"]
 [ext_resource type="PackedScene" uid="uid://bivm5gnaegrgl" path="res://Scenes/B411.tscn" id="2_yiv7u"]
@@ -8,13 +8,81 @@
 [ext_resource type="Script" path="res://Scripts/Brick Spawner.gd" id="6_qmww0"]
 [ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="7_skb64"]
 [ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="7_thk5g"]
+[ext_resource type="AudioStream" uid="uid://cl07uv5xxk5ep" path="res://Sound/Bounce Sounds/A5.mp3" id="7_v7r2b"]
 [ext_resource type="PackedScene" uid="uid://dre6h614axcv5" path="res://Scenes/metal_brick.tscn" id="8_c7c4j"]
+[ext_resource type="AudioStream" uid="uid://bxh8i6o8h7jyf" path="res://Sound/Bounce Sounds/A6.mp3" id="8_e6ape"]
+[ext_resource type="AudioStream" uid="uid://83fvtbvxhf3p" path="res://Sound/Bounce Sounds/F6.mp3" id="9_v27es"]
 [ext_resource type="PackedScene" uid="uid://cvm3xjlg1v6la" path="res://Scenes/button_brick.tscn" id="9_wnrq1"]
+[ext_resource type="AudioStream" uid="uid://1w1o3lb6tkm0" path="res://Sound/Bounce Sounds/F#5.mp3" id="10_dofw1"]
+[ext_resource type="AudioStream" uid="uid://dlt1x61koqcc1" path="res://Sound/Bounce Sounds/G5.mp3" id="11_cw8iy"]
 [ext_resource type="PackedScene" uid="uid://bk3jfvb1lrasx" path="res://Scenes/glass_brick.tscn" id="11_t758k"]
+[ext_resource type="AudioStream" uid="uid://bcgda8hy2n03o" path="res://Sound/Bounce Sounds/G6.mp3" id="12_8k8qf"]
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="12_q3del"]
 [ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="13_2w47j"]
+[ext_resource type="AudioStream" uid="uid://dc8vhpdcjmdpg" path="res://Sound/Bounce Sounds/G#5.mp3" id="13_gwgfd"]
 [ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="13_ujqt5"]
+[ext_resource type="AudioStream" uid="uid://ueikkn5dj21c" path="res://Sound/Bounce Sounds/No Sound.mp3" id="14_mes2i"]
 [ext_resource type="Script" path="res://Scenes/level_music.gd" id="14_p5f26"]
+[ext_resource type="AudioStream" uid="uid://bq3skcrat27ie" path="res://Sound/Bounce Sounds/B5.mp3" id="14_uu5wh"]
+[ext_resource type="AudioStream" uid="uid://koiusc5hw04k" path="res://Sound/Bounce Sounds/C6.mp3" id="15_urgry"]
+[ext_resource type="AudioStream" uid="uid://bjfikkwww5bou" path="res://Sound/Bounce Sounds/C7.mp3" id="16_hqqme"]
+[ext_resource type="AudioStream" uid="uid://lvumgp0iqlhg" path="res://Sound/Bounce Sounds/D5.mp3" id="17_gsxxp"]
+[ext_resource type="AudioStream" uid="uid://bsjqp3n5w70n3" path="res://Sound/Bounce Sounds/D6.mp3" id="18_aq1ml"]
+[ext_resource type="AudioStream" uid="uid://b7fs2xm6ywk73" path="res://Sound/Bounce Sounds/E5.mp3" id="19_vb70m"]
+[ext_resource type="AudioStream" uid="uid://cf240v7udiegq" path="res://Sound/Bounce Sounds/E6.mp3" id="20_wppp0"]
+[ext_resource type="AudioStream" uid="uid://iqn7mlgojujx" path="res://Sound/Bounce Sounds/F5.mp3" id="21_gonxa"]
+[ext_resource type="Script" path="res://Scenes/bounce_sound.gd" id="22_g43db"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_o0sgs"]
+clip_count = 16
+clip_0/name = &"Blank"
+clip_0/stream = ExtResource("14_mes2i")
+clip_0/auto_advance = 0
+clip_1/name = &"A 5"
+clip_1/stream = ExtResource("7_v7r2b")
+clip_1/auto_advance = 0
+clip_2/name = &"A 6"
+clip_2/stream = ExtResource("8_e6ape")
+clip_2/auto_advance = 0
+clip_3/name = &"B 5"
+clip_3/stream = ExtResource("14_uu5wh")
+clip_3/auto_advance = 0
+clip_4/name = &"C 6"
+clip_4/stream = ExtResource("15_urgry")
+clip_4/auto_advance = 0
+clip_5/name = &"C 7"
+clip_5/stream = ExtResource("16_hqqme")
+clip_5/auto_advance = 0
+clip_6/name = &"D 5"
+clip_6/stream = ExtResource("17_gsxxp")
+clip_6/auto_advance = 0
+clip_7/name = &"D 6"
+clip_7/stream = ExtResource("18_aq1ml")
+clip_7/auto_advance = 0
+clip_8/name = &"E 5"
+clip_8/stream = ExtResource("19_vb70m")
+clip_8/auto_advance = 0
+clip_9/name = &"E 6"
+clip_9/stream = ExtResource("20_wppp0")
+clip_9/auto_advance = 0
+clip_10/name = &"F 5"
+clip_10/stream = ExtResource("21_gonxa")
+clip_10/auto_advance = 0
+clip_11/name = &"F 6"
+clip_11/stream = ExtResource("9_v27es")
+clip_11/auto_advance = 0
+clip_12/name = &"F#5"
+clip_12/stream = ExtResource("10_dofw1")
+clip_12/auto_advance = 0
+clip_13/name = &"G 5"
+clip_13/stream = ExtResource("11_cw8iy")
+clip_13/auto_advance = 0
+clip_14/name = &"G 6"
+clip_14/stream = ExtResource("12_8k8qf")
+clip_14/auto_advance = 0
+clip_15/name = &"G#5"
+clip_15/stream = ExtResource("13_gwgfd")
+clip_15/auto_advance = 0
 
 [node name="Main" type="Node"]
 
@@ -56,6 +124,13 @@ collision_mask = 14
 death_zone = NodePath("../DeathZone")
 ui = NodePath("../UI")
 
+[node name="BounceSound" type="AudioStreamPlayer" parent="B411"]
+stream = SubResource("AudioStreamInteractive_o0sgs")
+volume_db = -6.0
+script = ExtResource("22_g43db")
+
+[node name="MusicTimer" type="Timer" parent="B411/BounceSound"]
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -200)
 
@@ -87,3 +162,5 @@ parameters/looping = true
 script = ExtResource("14_p5f26")
 
 [connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
+[connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
+[connection signal="timeout" from="B411/BounceSound/MusicTimer" to="B411/BounceSound" method="_on_music_timer_timeout"]

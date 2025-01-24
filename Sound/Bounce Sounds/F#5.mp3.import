@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1w1o3lb6tkm0"
+path="res://.godot/imported/F#5.mp3-fa166edb75d5bcd67899cb129501b199.mp3str"
+
+[deps]
+
+source_file="res://Sound/Bounce Sounds/F#5.mp3"
+dest_files=["res://.godot/imported/F#5.mp3-fa166edb75d5bcd67899cb129501b199.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
