@@ -45,7 +45,8 @@ func _physics_process(delta: float) -> void: #manages all movement of the ball, 
 		ball_collision(collision, collider)
 	else:
 		velocity = velocity.bounce(collision.get_normal())
-		
+	
+	$BounceSound.play_bounce_sound()
 
 #attempting to add player input to effect the ball
 func _input(event):
@@ -83,7 +84,7 @@ func _input(event):
 func min_velocity_check():
 	if velocity.length() < VELOCITY_MIN:
 		velocity = velocity.normalized() * VELOCITY_MIN
-	print(velocity.length())
+	#print(velocity.length())
 
 # randomized the starting direction of the ball. Not sure if this is how we want to start levels but is a simple default 
 #func start_ball():
