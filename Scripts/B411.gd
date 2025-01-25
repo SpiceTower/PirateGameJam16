@@ -22,6 +22,7 @@ var player_control : bool = false
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 
 func _ready():
@@ -58,26 +59,30 @@ func _input(event):
 		animated_sprite_2d.play("Up")
 		velocity = velocity + (Vector2(0,-1) * boost)
 		min_velocity_check()
+		sprite_2d.set_frame(1)
 	elif Input.is_action_just_pressed("Down") and boost_ready == true:
 		boost_ready = false
 		$Timer.start()
 		animated_sprite_2d.play("Down")
 		velocity = velocity + (Vector2(0,1) * boost)
 		min_velocity_check()
+		sprite_2d.set_frame(1)
 	elif Input.is_action_just_pressed("Right") and boost_ready == true:
 		boost_ready = false
 		$Timer.start()
 		animated_sprite_2d.play("Right")
 		velocity = velocity + (Vector2(1,0) * boost)
 		min_velocity_check()
+		sprite_2d.set_frame(1)
 	elif Input.is_action_just_pressed("Left") and boost_ready == true:
 		boost_ready = false
 		$Timer.start()
 		animated_sprite_2d.play("Left")
 		velocity = velocity + (Vector2(-1,0) * boost)
 		min_velocity_check()
+		sprite_2d.set_frame(1)
 	else:
-		animated_sprite_2d.play("default")
+#		animated_sprite_2d.play("default")
 		return
 
 #requires ball to move at a minimum velocity
@@ -150,4 +155,5 @@ func ball_collision(collision, collider):
 	min_velocity_check()
 
 func _on_timer_timeout():
+	sprite_2d.set_frame(0)
 	boost_ready = true # Replace with function body.
