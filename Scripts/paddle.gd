@@ -2,12 +2,14 @@ extends RigidBody2D
 
 class_name Paddle
 
+const paddle_y = 250
+
 var direction = Vector2.ZERO
 var camera_rect: Rect2
 var ball_paddle_diff_tolerance: float
 var is_ball_started = false
 
-@export var speed = 900
+@export var speed = 750
 @export var camera: Camera2D
 
 @onready var ball = $"../B411" as Ball
@@ -35,15 +37,28 @@ func _physics_process(delta):
 func _process(delta):
 	var camera_start_x = camera.position.x - camera_rect.size.x / 2 
 	var camera_end_x = camera_start_x + camera_rect.size.x
+	var ball_position_y = ball.global_position.y
 	
 	if global_position.x - ball_paddle_diff_tolerance < camera_start_x:
+		global_position.y = paddle_y
 		global_position.x = camera_start_x + ball_paddle_diff_tolerance
 	elif global_position.x + ball_paddle_diff_tolerance > camera_end_x:
+		global_position.y = paddle_y
 		global_position.x = camera_end_x - ball_paddle_diff_tolerance
+	
+	if global_position.y - ball_position_y <= 0 && collision_shape_2d.disabled == false: 
+		collision_shape_2d.disabled = true
+		print(global_position.y)
+	
+	if collision_shape_2d.disabled == true && (global_position.y - ball_position_y) > 50:
+		collision_shape_2d.disabled = false
+		print("ball ", ball_position_y)
+		
 		
 	#attempt to creat an auto paddle
 	
 	var ball_position = ball.global_position.x
+	
 	var paddle_position = global_position.x
 	
 	if paddle_position - ball_position < -ball_paddle_diff_tolerance:
@@ -52,6 +67,7 @@ func _process(delta):
 		direction = Vector2.LEFT
 	else: 
 		direction = Vector2.ZERO
+
 
 #func _input(event):
 #	if Input.is_action_pressed("Left"):
