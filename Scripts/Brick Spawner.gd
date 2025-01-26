@@ -4,8 +4,9 @@ extends Node
 
 class_name BrickSpawner
 
-const COLUMNS = 5
-const ROWS = 6
+# These are formated weird since they began as constants. I will clean this up later if this works as intended
+@export var COLUMNS = 5
+@export var ROWS = 6
 
 @onready var ball = $"../B411" as Ball
 @onready var ui = $"../UI" as UI

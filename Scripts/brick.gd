@@ -24,6 +24,7 @@ var sprites: Array[Texture2D] = [
 	preload("res://Base Assets/Bricks Metal 1.png")
 ]
 
+
 func get_size():
 	return collision_shape_2d.shape.get_rect().size
 

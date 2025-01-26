@@ -1,0 +1,253 @@
+[gd_scene load_steps=34 format=3 uid="uid://bj03pmo8hmvu3"]
+
+[ext_resource type="PackedScene" uid="uid://d58y3qb4qpv1" path="res://Scenes/paddle.tscn" id="1_usykd"]
+[ext_resource type="PackedScene" uid="uid://cvu4ayn55v757" path="res://Scenes/ui.tscn" id="2_aw4a8"]
+[ext_resource type="PackedScene" uid="uid://dbbyg8uqnfmxw" path="res://Scenes/death_zone.tscn" id="3_8xudg"]
+[ext_resource type="PackedScene" uid="uid://bwwyky5ugiieh" path="res://Scenes/walls.tscn" id="4_freoc"]
+[ext_resource type="PackedScene" uid="uid://bivm5gnaegrgl" path="res://Scenes/B411.tscn" id="5_udrfq"]
+[ext_resource type="AudioStream" uid="uid://ueikkn5dj21c" path="res://Sound/Bounce Sounds/No Sound.mp3" id="6_8rfq3"]
+[ext_resource type="AudioStream" uid="uid://cl07uv5xxk5ep" path="res://Sound/Bounce Sounds/A5.mp3" id="7_1ybco"]
+[ext_resource type="AudioStream" uid="uid://iqn7mlgojujx" path="res://Sound/Bounce Sounds/F5.mp3" id="8_txhas"]
+[ext_resource type="AudioStream" uid="uid://83fvtbvxhf3p" path="res://Sound/Bounce Sounds/F6.mp3" id="9_beed3"]
+[ext_resource type="AudioStream" uid="uid://1w1o3lb6tkm0" path="res://Sound/Bounce Sounds/F#5.mp3" id="10_deklo"]
+[ext_resource type="AudioStream" uid="uid://dlt1x61koqcc1" path="res://Sound/Bounce Sounds/G5.mp3" id="11_m5ejo"]
+[ext_resource type="AudioStream" uid="uid://bcgda8hy2n03o" path="res://Sound/Bounce Sounds/G6.mp3" id="12_ubysp"]
+[ext_resource type="AudioStream" uid="uid://dc8vhpdcjmdpg" path="res://Sound/Bounce Sounds/G#5.mp3" id="13_7hcfa"]
+[ext_resource type="AudioStream" uid="uid://bxh8i6o8h7jyf" path="res://Sound/Bounce Sounds/A6.mp3" id="14_icqbe"]
+[ext_resource type="AudioStream" uid="uid://bq3skcrat27ie" path="res://Sound/Bounce Sounds/B5.mp3" id="15_j2bnc"]
+[ext_resource type="AudioStream" uid="uid://koiusc5hw04k" path="res://Sound/Bounce Sounds/C6.mp3" id="16_mk2y4"]
+[ext_resource type="AudioStream" uid="uid://bjfikkwww5bou" path="res://Sound/Bounce Sounds/C7.mp3" id="17_m0j4y"]
+[ext_resource type="AudioStream" uid="uid://lvumgp0iqlhg" path="res://Sound/Bounce Sounds/D5.mp3" id="18_my1sq"]
+[ext_resource type="AudioStream" uid="uid://bsjqp3n5w70n3" path="res://Sound/Bounce Sounds/D6.mp3" id="19_8uet5"]
+[ext_resource type="AudioStream" uid="uid://b7fs2xm6ywk73" path="res://Sound/Bounce Sounds/E5.mp3" id="20_tm7f4"]
+[ext_resource type="AudioStream" uid="uid://cf240v7udiegq" path="res://Sound/Bounce Sounds/E6.mp3" id="21_hsqtp"]
+[ext_resource type="Script" path="res://Scripts/bounce_sound.gd" id="22_6ch1i"]
+[ext_resource type="Script" path="res://Scripts/Brick Spawner.gd" id="23_hde4i"]
+[ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="24_hbx22"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="26_x4vns"]
+[ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="27_q5ril"]
+[ext_resource type="Script" path="res://Scripts/level_music.gd" id="28_7ceb3"]
+[ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="29_vyuy4"]
+[ext_resource type="Script" path="res://Scripts/signal_detector.gd" id="30_illh1"]
+[ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="31_2bd64"]
+[ext_resource type="PackedScene" uid="uid://dre6h614axcv5" path="res://Scenes/metal_brick.tscn" id="32_qlvyf"]
+[ext_resource type="PackedScene" uid="uid://bndjanvlw6c1l" path="res://Scenes/Shield.tscn" id="32_r4xix"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_o0sgs"]
+clip_count = 16
+clip_0/name = &"Blank"
+clip_0/stream = ExtResource("6_8rfq3")
+clip_0/auto_advance = 0
+clip_1/name = &"A 5"
+clip_1/stream = ExtResource("7_1ybco")
+clip_1/auto_advance = 0
+clip_2/name = &"A 6"
+clip_2/stream = ExtResource("14_icqbe")
+clip_2/auto_advance = 0
+clip_3/name = &"B 5"
+clip_3/stream = ExtResource("15_j2bnc")
+clip_3/auto_advance = 0
+clip_4/name = &"C 6"
+clip_4/stream = ExtResource("16_mk2y4")
+clip_4/auto_advance = 0
+clip_5/name = &"C 7"
+clip_5/stream = ExtResource("17_m0j4y")
+clip_5/auto_advance = 0
+clip_6/name = &"D 5"
+clip_6/stream = ExtResource("18_my1sq")
+clip_6/auto_advance = 0
+clip_7/name = &"D 6"
+clip_7/stream = ExtResource("19_8uet5")
+clip_7/auto_advance = 0
+clip_8/name = &"E 5"
+clip_8/stream = ExtResource("20_tm7f4")
+clip_8/auto_advance = 0
+clip_9/name = &"E 6"
+clip_9/stream = ExtResource("21_hsqtp")
+clip_9/auto_advance = 0
+clip_10/name = &"F 5"
+clip_10/stream = ExtResource("8_txhas")
+clip_10/auto_advance = 0
+clip_11/name = &"F 6"
+clip_11/stream = ExtResource("9_beed3")
+clip_11/auto_advance = 0
+clip_12/name = &"F#5"
+clip_12/stream = ExtResource("10_deklo")
+clip_12/auto_advance = 0
+clip_13/name = &"G 5"
+clip_13/stream = ExtResource("11_m5ejo")
+clip_13/auto_advance = 0
+clip_14/name = &"G 6"
+clip_14/stream = ExtResource("12_ubysp")
+clip_14/auto_advance = 0
+clip_15/name = &"G#5"
+clip_15/stream = ExtResource("13_7hcfa")
+clip_15/auto_advance = 0
+
+[node name="Main" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Paddle" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_usykd")]
+position = Vector2(0, 250)
+camera = NodePath("../Camera2D")
+
+[node name="UI" parent="." instance=ExtResource("2_aw4a8")]
+visible = false
+
+[node name="DeathZone" parent="." instance=ExtResource("3_8xudg")]
+position = Vector2(-3, 447)
+collision_layer = 0
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Upper Wall" parent="Walls" instance=ExtResource("4_freoc")]
+position = Vector2(0, -335)
+collision_layer = 4
+
+[node name="Right Wall" parent="Walls" instance=ExtResource("4_freoc")]
+position = Vector2(586, 0)
+rotation = 1.5708
+collision_layer = 4
+
+[node name="Left Wall" parent="Walls" instance=ExtResource("4_freoc")]
+position = Vector2(-586, 0)
+rotation = 1.5708
+collision_layer = 4
+
+[node name="Bottom Wall" parent="Walls" instance=ExtResource("4_freoc")]
+position = Vector2(-7, 334)
+collision_layer = 4
+
+[node name="B411" parent="." node_paths=PackedStringArray("death_zone", "ui") instance=ExtResource("5_udrfq")]
+position = Vector2(0, 150)
+collision_mask = 14
+death_zone = NodePath("../DeathZone")
+ui = NodePath("../UI")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="B411"]
+stream = SubResource("AudioStreamInteractive_o0sgs")
+volume_db = -6.0
+script = ExtResource("22_6ch1i")
+
+[node name="MusicTimer" type="Timer" parent="B411/BounceSound"]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -200)
+
+[node name="BrickSpawner" type="Node" parent="." node_paths=PackedStringArray("spawn_start")]
+script = ExtResource("23_hde4i")
+COLUMNS = 0
+ROWS = 0
+brick_scene = ExtResource("24_hbx22")
+spawn_start = NodePath("../Marker2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("26_x4vns")]
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_q5ril")
+volume_db = -12.0
+parameters/looping = true
+script = ExtResource("28_7ceb3")
+
+[node name="All the Bricks" type="Node" parent="."]
+
+[node name="Bricks Layer 1" type="Node" parent="All the Bricks"]
+
+[node name="BrickBrick3" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+position = Vector2(-125, -150)
+
+[node name="BrickBrick2" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+position = Vector2(125, -150)
+
+[node name="BrickBrick" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+position = Vector2(0, -125)
+
+[node name="BrickBrick4" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+position = Vector2(250, -200)
+
+[node name="BrickBrick5" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+position = Vector2(-250, -200)
+
+[node name="Brick Layer 2" type="Node" parent="All the Bricks"]
+
+[node name="BrickBrick" parent="All the Bricks/Brick Layer 2" instance=ExtResource("29_vyuy4")]
+position = Vector2(0, -75)
+damagelevel = 2
+
+[node name="BrickBrick2" parent="All the Bricks/Brick Layer 2" instance=ExtResource("29_vyuy4")]
+position = Vector2(125, -100)
+damagelevel = 2
+
+[node name="BrickBrick3" parent="All the Bricks/Brick Layer 2" instance=ExtResource("29_vyuy4")]
+position = Vector2(250, -150)
+damagelevel = 2
+
+[node name="BrickBrick4" parent="All the Bricks/Brick Layer 2" instance=ExtResource("29_vyuy4")]
+position = Vector2(-125, -100)
+damagelevel = 2
+
+[node name="BrickBrick5" parent="All the Bricks/Brick Layer 2" instance=ExtResource("29_vyuy4")]
+position = Vector2(-250, -150)
+damagelevel = 2
+
+[node name="Brick Layer 3" type="Node" parent="All the Bricks"]
+
+[node name="BrickBrick" parent="All the Bricks/Brick Layer 3" instance=ExtResource("29_vyuy4")]
+position = Vector2(0, -25)
+damagelevel = 1
+
+[node name="BrickBrick2" parent="All the Bricks/Brick Layer 3" instance=ExtResource("29_vyuy4")]
+position = Vector2(125, -50)
+damagelevel = 1
+
+[node name="BrickBrick3" parent="All the Bricks/Brick Layer 3" instance=ExtResource("29_vyuy4")]
+position = Vector2(-250, -100)
+damagelevel = 1
+
+[node name="BrickBrick4" parent="All the Bricks/Brick Layer 3" instance=ExtResource("29_vyuy4")]
+position = Vector2(-125, -50)
+damagelevel = 1
+
+[node name="BrickBrick5" parent="All the Bricks/Brick Layer 3" instance=ExtResource("29_vyuy4")]
+position = Vector2(250, -100)
+damagelevel = 1
+
+[node name="Shield Generators" type="Node" parent="."]
+
+[node name="SignalDetector" type="Node" parent="Shield Generators"]
+script = ExtResource("30_illh1")
+
+[node name="Military Brick2" parent="Shield Generators" instance=ExtResource("31_2bd64")]
+position = Vector2(515, -325)
+rotation = -3.14159
+
+[node name="Military Brick" parent="Shield Generators" instance=ExtResource("31_2bd64")]
+position = Vector2(-515, -325)
+rotation = -3.14159
+
+[node name="Shield" parent="Shield Generators" node_paths=PackedStringArray("detector") instance=ExtResource("32_r4xix")]
+position = Vector2(0, -325)
+detector = NodePath("../SignalDetector")
+
+[node name="Metal Bricks" type="Node" parent="."]
+
+[node name="MetalBrick" parent="Metal Bricks" instance=ExtResource("32_qlvyf")]
+position = Vector2(-515, -220)
+
+[node name="MetalBrick2" parent="Metal Bricks" instance=ExtResource("32_qlvyf")]
+position = Vector2(515, -220)
+
+[node name="MetalBrick3" parent="Metal Bricks" instance=ExtResource("32_qlvyf")]
+position = Vector2(-435, -260)
+rotation = 1.5708
+
+[node name="MetalBrick4" parent="Metal Bricks" instance=ExtResource("32_qlvyf")]
+position = Vector2(435, -260)
+rotation = 1.5708
+
+[connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
+[connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
+[connection signal="timeout" from="B411/BounceSound/MusicTimer" to="B411/BounceSound" method="_on_music_timer_timeout"]

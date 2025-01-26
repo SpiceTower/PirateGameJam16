@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bgcprsl5emin7"]
+[gd_scene load_steps=34 format=3 uid="uid://bgcprsl5emin7"]
 
 [ext_resource type="PackedScene" uid="uid://d58y3qb4qpv1" path="res://Scenes/paddle.tscn" id="1_oi70r"]
 [ext_resource type="PackedScene" uid="uid://bivm5gnaegrgl" path="res://Scenes/B411.tscn" id="2_yiv7u"]
@@ -18,11 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://bk3jfvb1lrasx" path="res://Scenes/glass_brick.tscn" id="11_t758k"]
 [ext_resource type="AudioStream" uid="uid://bcgda8hy2n03o" path="res://Sound/Bounce Sounds/G6.mp3" id="12_8k8qf"]
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="12_q3del"]
-[ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="13_2w47j"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="13_2w47j"]
 [ext_resource type="AudioStream" uid="uid://dc8vhpdcjmdpg" path="res://Sound/Bounce Sounds/G#5.mp3" id="13_gwgfd"]
 [ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="13_ujqt5"]
 [ext_resource type="AudioStream" uid="uid://ueikkn5dj21c" path="res://Sound/Bounce Sounds/No Sound.mp3" id="14_mes2i"]
-[ext_resource type="Script" path="res://Scenes/level_music.gd" id="14_p5f26"]
+[ext_resource type="Script" path="res://Scripts/level_music.gd" id="14_p5f26"]
 [ext_resource type="AudioStream" uid="uid://bq3skcrat27ie" path="res://Sound/Bounce Sounds/B5.mp3" id="14_uu5wh"]
 [ext_resource type="AudioStream" uid="uid://koiusc5hw04k" path="res://Sound/Bounce Sounds/C6.mp3" id="15_urgry"]
 [ext_resource type="AudioStream" uid="uid://bjfikkwww5bou" path="res://Sound/Bounce Sounds/C7.mp3" id="16_hqqme"]
@@ -31,7 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://b7fs2xm6ywk73" path="res://Sound/Bounce Sounds/E5.mp3" id="19_vb70m"]
 [ext_resource type="AudioStream" uid="uid://cf240v7udiegq" path="res://Sound/Bounce Sounds/E6.mp3" id="20_wppp0"]
 [ext_resource type="AudioStream" uid="uid://iqn7mlgojujx" path="res://Sound/Bounce Sounds/F5.mp3" id="21_gonxa"]
-[ext_resource type="Script" path="res://Scenes/bounce_sound.gd" id="22_g43db"]
+[ext_resource type="Script" path="res://Scripts/bounce_sound.gd" id="22_g43db"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_o0sgs"]
 clip_count = 16
@@ -117,6 +117,10 @@ position = Vector2(-586, 0)
 rotation = 1.5708
 collision_layer = 4
 
+[node name="Bottom Wall" parent="Walls" instance=ExtResource("3_1lvrn")]
+position = Vector2(-7, 334)
+collision_layer = 4
+
 [node name="B411" parent="." node_paths=PackedStringArray("death_zone", "ui") instance=ExtResource("2_yiv7u")]
 position = Vector2(0, 150)
 collision_mask = 14
@@ -160,10 +164,6 @@ volume_db = -12.0
 parameters/looping = true
 script = ExtResource("14_p5f26")
 
-[node name="Walls2" parent="." instance=ExtResource("3_1lvrn")]
-position = Vector2(-7, 334)
-collision_layer = 4
-
-[connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
 [connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
+[connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
 [connection signal="timeout" from="B411/BounceSound/MusicTimer" to="B411/BounceSound" method="_on_music_timer_timeout"]

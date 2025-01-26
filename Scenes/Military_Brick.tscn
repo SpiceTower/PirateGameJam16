@@ -266,3 +266,9 @@ animation = &"Undamaged"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -33.5)
 shape = SubResource("RectangleShape2D_vpxqj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
