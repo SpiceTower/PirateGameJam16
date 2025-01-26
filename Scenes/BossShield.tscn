@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckreh6g46ci8k"]
+
+[ext_resource type="Script" path="res://Scripts/shield.gd" id="1_5yng1"]
+[ext_resource type="Texture2D" uid="uid://ikvaysdvr063" path="res://Base Assets/Boss Fight 2-Sheet.png" id="2_icvbf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pc0gb"]
+radius = 140.0
+
+[node name="BossShield" type="RigidBody2D"]
+collision_layer = 4
+freeze = true
+script = ExtResource("1_5yng1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("2_icvbf")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(0.557352, 0.657122, 0.957663, 1)
+shape = SubResource("CircleShape2D_pc0gb")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

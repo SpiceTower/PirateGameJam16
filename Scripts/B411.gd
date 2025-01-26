@@ -41,7 +41,10 @@ func _physics_process(delta: float) -> void: #manages all movement of the ball, 
 	var collider = collision.get_collider()
 	if collider is Brick:
 		collider.decrease_level()
-		
+	if collider is Boss:
+		collider.explode()
+	if collider is EvilBall:
+		collider.explode()
 	if collider is Brick or collider is Paddle:
 		ball_collision(collision, collider)
 	else:

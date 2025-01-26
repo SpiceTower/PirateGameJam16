@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://27mgyobda7jb"]
+
+[ext_resource type="Script" path="res://Scripts/evil_ball.gd" id="1_u6cqw"]
+[ext_resource type="Texture2D" uid="uid://coeu4vptxu8br" path="res://Base Assets/B411 Evil-Sheet.png" id="2_o1xqs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd8lk"]
+atlas = ExtResource("2_o1xqs")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d7ty"]
+atlas = ExtResource("2_o1xqs")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts6fb"]
+atlas = ExtResource("2_o1xqs")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ih8b"]
+atlas = ExtResource("2_o1xqs")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yxf2"]
+atlas = ExtResource("2_o1xqs")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1srbi"]
+atlas = ExtResource("2_o1xqs")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1yqoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd8lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d7ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts6fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ih8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yxf2")
+}],
+"loop": false,
+"name": &"Ball Explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1srbi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxpgq"]
+radius = 30.0
+
+[node name="Evil Ball" type="RigidBody2D"]
+collision_mask = 9
+freeze = true
+script = ExtResource("1_u6cqw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1yqoc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vxpgq")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
