@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgrept31hop3q"
+path="res://.godot/imported/Music to make bad decisions to draft 1.mp3-22e704228fad32146041e3816c62f9a2.mp3str"
+
+[deps]
+
+source_file="res://Sound/Music to make bad decisions to draft 1.mp3"
+dest_files=["res://.godot/imported/Music to make bad decisions to draft 1.mp3-22e704228fad32146041e3816c62f9a2.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=4.05
+bpm=0.0
+beat_count=0
+bar_beats=4

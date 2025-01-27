@@ -4,6 +4,7 @@ class_name Ball
 
 signal life_start #resets music
 signal life_lost #connected to the death_zone node
+signal paddle_hit
 
 const VELOCITY_MIN = 10 #The lower bound for the speed of the ball
 const VELOCITY_MAX = 40 #The upper bound for speed of the ball
@@ -14,7 +15,7 @@ const VELOCITY_MAX = 40 #The upper bound for speed of the ball
 @export var ui : UI
 @export var boost = 30
 
-var speed_up_factor = 1.01
+var speed_up_factor = 1.1
 var last_collider_id
 var start_postion: Vector2
 var boost_ready : bool = true
@@ -140,22 +141,55 @@ func ball_collision(collision, collider):
 	
 	var new_velocity = Vector2.ZERO
 	
-	new_velocity.x = velocity_xy * collision_x
 	
-	if collider.get_rid() == last_collider_id && collider is Brick:
-		new_velocity.x = new_velocity.rotated(deg_to_rad(randf_range(-45,45))).x * 10
+	if absf(collision_x) < 1:
+		new_velocity.x = velocity_xy * collision_x
+		
+		#if collider.get_rid() == last_collider_id && collider is Brick:
+		#	new_velocity.x = new_velocity.rotated(deg_to_rad(randf_range(-45,45))).x * 10
+		#else:
+		#	last_collider_id == collider.get_rid()
+		
+		#if collider is Paddle:
+		new_velocity.y = sqrt(absf(velocity_xy * velocity_xy - new_velocity.x * new_velocity.x)) *\
+			(-1 if velocity.y > 0 else 1)
+		#elif collider is Brick:
+		#	new_velocity.y = sqrt(absf(velocity_xy * velocity_xy - new_velocity.x * new_velocity.x))
+		
+	elif absf(collision_y) < 1:
+		#if collider is Paddle:
+		new_velocity.y = velocity_xy * collision_y #* (-1 if velocity.y > 0 else 1)
+		#elif collider is Brick:
+		#	new_velocity.y = velocity_xy * collision_y
+		
+		#if collider.get_rid() == last_collider_id && collider is Brick:
+		#	new_velocity.y = new_velocity.rotated(deg_to_rad(randf_range(-45,45))).x * 10
+		#else:
+		#	last_collider_id == collider.get_rid()
+		
+		new_velocity.x = sqrt(absf(velocity_xy * velocity_xy - new_velocity.y * new_velocity.y)) *\
+			(-1 if velocity.x > 0 else 1)
+
 	else:
-		last_collider_id == collider.get_rid()
+		if sign(collision_x) == 1:
+			new_velocity.x = absf(velocity.x)
+		else:
+			new_velocity.x = -absf(velocity.x)
+			
+		if sign(collision_y) == 1:
+			new_velocity.y = absf(velocity.y)
+		else:
+			new_velocity.y = -absf(velocity.y)
 	
 	if collider is Paddle:
-		new_velocity.y = sqrt(absf(velocity_xy * velocity_xy - new_velocity.x * new_velocity.x)) * (-1 if velocity.y > 0 else 1)
-	elif collider is Brick:
-		new_velocity.y = velocity_xy * collision_y
+		paddle_hit.emit()
 	
 	var speed_multiplier = speed_up_factor if collider is Paddle else 1
 	
 	velocity = (new_velocity * speed_multiplier).limit_length(VELOCITY_MAX)
+	
 	min_velocity_check()
+	
 
 func _on_timer_timeout():
 	sprite_2d.set_frame(0)

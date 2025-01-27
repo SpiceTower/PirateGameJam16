@@ -16,8 +16,11 @@ func shield_check():
 	shield_health = shield_health - 1
 	
 	if shield_health == 0:
-		$Timer.start(3)
+		#$Timer.start(3)
+		await get_tree().create_timer(2.0).timeout
+		sprite_2d.set_frame(1)
+		collision_shape_2d.disabled = true
 
-func _on_timer_timeout() -> void:
-	sprite_2d.set_frame(1)
-	collision_shape_2d.disabled = true
+#func _on_timer_timeout() -> void:
+	#sprite_2d.set_frame(1)
+	#collision_shape_2d.disabled = true

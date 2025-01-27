@@ -4,10 +4,13 @@ class_name Paddle
 
 const paddle_y = 250
 
+signal paddle_hit
+
 var direction = Vector2.ZERO
 var camera_rect: Rect2
 var ball_paddle_diff_tolerance: float
 var is_ball_started = false
+var paddle_frozen = false
 
 @export var speed = 750
 @export var camera: Camera2D
@@ -39,20 +42,18 @@ func _process(delta):
 	var camera_end_x = camera_start_x + camera_rect.size.x
 	var ball_position_y = ball.global_position.y
 	
+
 	if global_position.x - ball_paddle_diff_tolerance < camera_start_x:
-		global_position.y = paddle_y
 		global_position.x = camera_start_x + ball_paddle_diff_tolerance
 	elif global_position.x + ball_paddle_diff_tolerance > camera_end_x:
-		global_position.y = paddle_y
 		global_position.x = camera_end_x - ball_paddle_diff_tolerance
+	
 	
 	if global_position.y - ball_position_y <= 0 && collision_shape_2d.disabled == false: 
 		collision_shape_2d.disabled = true
-		print(global_position.y)
 	
 	if collision_shape_2d.disabled == true && (global_position.y - ball_position_y) > 50:
 		collision_shape_2d.disabled = false
-		print("ball ", ball_position_y)
 		
 		
 	#attempt to creat an auto paddle
@@ -61,13 +62,26 @@ func _process(delta):
 	
 	var paddle_position = global_position.x
 	
-	if paddle_position - ball_position < -ball_paddle_diff_tolerance:
-		direction = Vector2.RIGHT
-	elif paddle_position - ball_position > ball_paddle_diff_tolerance:
-		direction = Vector2.LEFT
+	if paddle_frozen == false:
+		if paddle_position - ball_position < -ball_paddle_diff_tolerance:
+			direction = Vector2.RIGHT
+		elif paddle_position - ball_position > ball_paddle_diff_tolerance:
+			direction = Vector2.LEFT
+		else: 
+			direction = Vector2.ZERO
 	else: 
 		direction = Vector2.ZERO
 
+
+func _on_b_411_paddle_hit():
+	$Timer.start()
+	paddle_frozen = true
+	if global_position.y != paddle_y:
+		global_position.y = paddle_y
+
+
+func _on_timer_timeout():
+	paddle_frozen = false
 
 #func _input(event):
 #	if Input.is_action_pressed("Left"):
