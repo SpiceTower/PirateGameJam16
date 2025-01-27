@@ -23,8 +23,8 @@
 [ext_resource type="Script" path="res://Scripts/bounce_sound.gd" id="22_6ch1i"]
 [ext_resource type="Script" path="res://Scripts/Brick Spawner.gd" id="23_hde4i"]
 [ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="24_hbx22"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="26_x4vns"]
-[ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="27_q5ril"]
+[ext_resource type="AudioStream" uid="uid://dgrept31hop3q" path="res://Sound/Music to make bad decisions to draft 1.mp3" id="25_rgh8a"]
+[ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="26_x4vns"]
 [ext_resource type="Script" path="res://Scripts/level_music.gd" id="28_7ceb3"]
 [ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="29_vyuy4"]
 [ext_resource type="Script" path="res://Scripts/signal_detector.gd" id="30_illh1"]
@@ -84,7 +84,7 @@ clip_15/name = &"G#5"
 clip_15/stream = ExtResource("13_7hcfa")
 clip_15/auto_advance = 0
 
-[node name="Main" type="Node"]
+[node name="LevelThree" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -139,8 +139,8 @@ spawn_start = NodePath("../Marker2D")
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("26_x4vns")]
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("27_q5ril")
-volume_db = -12.0
+stream = ExtResource("25_rgh8a")
+volume_db = 2.2
 parameters/looping = true
 script = ExtResource("28_7ceb3")
 

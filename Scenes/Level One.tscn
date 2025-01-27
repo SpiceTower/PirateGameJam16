@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="25_chjdu"]
 [ext_resource type="PackedScene" uid="uid://cvm3xjlg1v6la" path="res://Scenes/button_brick.tscn" id="26_nr78e"]
 [ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="27_p2wpn"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="30_b6me1"]
+[ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="30_b6me1"]
 [ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="31_5x0en"]
 [ext_resource type="Script" path="res://Scripts/level_music.gd" id="32_b87hj"]
 
@@ -81,7 +81,7 @@ clip_15/name = &"G#5"
 clip_15/stream = ExtResource("14_x6vyu")
 clip_15/auto_advance = 0
 
-[node name="Main" type="Node"]
+[node name="LevelOne" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -118,7 +118,6 @@ collision_layer = 4
 
 [node name="B411" parent="." node_paths=PackedStringArray("death_zone", "ui") instance=ExtResource("6_wrtaw")]
 position = Vector2(0, 150)
-collision_mask = 14
 death_zone = NodePath("../DeathZone")
 ui = NodePath("../UI")
 
@@ -217,4 +216,5 @@ damagelevel = 1
 
 [connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
 [connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
+[connection signal="paddle_hit" from="B411" to="Paddle" method="_on_b_411_paddle_hit"]
 [connection signal="timeout" from="B411/BounceSound/MusicTimer" to="B411/BounceSound" method="_on_music_timer_timeout"]
