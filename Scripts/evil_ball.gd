@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 		explode()
 
 func reset_ball():
-	velocity = Vector2(randf_range(-1, 1), randf_range(.1, 1)).normalized() * ball_speed
+	#velocity = Vector2(randf_range(-1, 1), randf_range(.1, 1)).normalized() * ball_speed
+	velocity = Vector2(0, 1).rotated(deg_to_rad(randf_range(-45, 45))) * ball_speed
 
 func explode():
 	animated_sprite_2d.play("Ball Explode")
