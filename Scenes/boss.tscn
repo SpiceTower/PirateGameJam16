@@ -344,14 +344,13 @@ script = ExtResource("1_lwsyx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_n030n")
 animation = &"Throw Ball"
-frame = 3
-frame_progress = 0.801899
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k4w2b")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-72, 0)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://bj03pmo8hmvu3"]
+[gd_scene load_steps=36 format=3 uid="uid://bj03pmo8hmvu3"]
 
+[ext_resource type="Script" path="res://Scripts/level_three.gd" id="1_te68l"]
 [ext_resource type="PackedScene" uid="uid://cvu4ayn55v757" path="res://Scenes/ui.tscn" id="2_aw4a8"]
 [ext_resource type="PackedScene" uid="uid://dbbyg8uqnfmxw" path="res://Scenes/death_zone.tscn" id="3_8xudg"]
 [ext_resource type="PackedScene" uid="uid://bwwyky5ugiieh" path="res://Scenes/walls.tscn" id="4_freoc"]
@@ -24,7 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/Brick Spawner.gd" id="23_hde4i"]
 [ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="24_hbx22"]
 [ext_resource type="AudioStream" uid="uid://dgrept31hop3q" path="res://Sound/Music to make bad decisions to draft 1.mp3" id="25_rgh8a"]
-[ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="26_x4vns"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="26_x4vns"]
 [ext_resource type="Script" path="res://Scripts/level_music.gd" id="28_7ceb3"]
 [ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="29_vyuy4"]
 [ext_resource type="Script" path="res://Scripts/signal_detector.gd" id="30_illh1"]
@@ -32,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="31_2bd64"]
 [ext_resource type="PackedScene" uid="uid://0mv6o51ueia5" path="res://Scenes/boss.tscn" id="31_uvr0w"]
 [ext_resource type="PackedScene" uid="uid://dre6h614axcv5" path="res://Scenes/metal_brick.tscn" id="32_qlvyf"]
+[ext_resource type="PackedScene" uid="uid://cdrlvwdm7w7kv" path="res://Scenes/Text Box.tscn" id="34_7x6oy"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_o0sgs"]
 clip_count = 16
@@ -84,7 +86,9 @@ clip_15/name = &"G#5"
 clip_15/stream = ExtResource("13_7hcfa")
 clip_15/auto_advance = 0
 
-[node name="LevelThree" type="Node"]
+[node name="LevelThree" type="Node" node_paths=PackedStringArray("detector")]
+script = ExtResource("1_te68l")
+detector = NodePath("SignalDetector")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -144,106 +148,135 @@ volume_db = 2.2
 parameters/looping = true
 script = ExtResource("28_7ceb3")
 
+[node name="SignalDetector" type="Node" parent="."]
+script = ExtResource("30_illh1")
+
 [node name="All the Bricks" type="Node" parent="."]
 
 [node name="Bricks Layer 1" type="Node" parent="All the Bricks"]
 
-[node name="BrickBrick3" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick3" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-125, 275)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick2" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick2" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(125, 275)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(0, 275)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick4" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick4" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(250, 275)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick5" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick5" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-250, 275)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick6" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick6" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(375, 275)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick7" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick7" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(500, 275)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick8" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick8" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-500, 275)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick9" parent="All the Bricks/Bricks Layer 1" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick9" parent="All the Bricks/Bricks Layer 1" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-375, 275)
+detector = NodePath("../../../SignalDetector")
 
 [node name="Bricks Layer 2" type="Node" parent="All the Bricks"]
 
-[node name="BrickBrick3" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick3" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-65, 235)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick2" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick2" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-190, 235)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-315, 235)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick4" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick4" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-440, 235)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick5" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick5" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(65, 235)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick6" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick6" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(190, 235)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick7" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick7" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(315, 235)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick8" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick8" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(440, 235)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick9" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick9" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(-500, 195)
+detector = NodePath("../../../SignalDetector")
 
-[node name="BrickBrick10" parent="All the Bricks/Bricks Layer 2" instance=ExtResource("29_vyuy4")]
+[node name="BrickBrick10" parent="All the Bricks/Bricks Layer 2" node_paths=PackedStringArray("detector") instance=ExtResource("29_vyuy4")]
 position = Vector2(500, 195)
+detector = NodePath("../../../SignalDetector")
 
 [node name="Shield Generators" type="Node" parent="."]
 
-[node name="SignalDetector" type="Node" parent="Shield Generators"]
-script = ExtResource("30_illh1")
-
-[node name="Military Brick2" parent="Shield Generators" instance=ExtResource("31_2bd64")]
+[node name="Military Brick2" parent="Shield Generators" node_paths=PackedStringArray("detector") instance=ExtResource("31_2bd64")]
 position = Vector2(515, -325)
 rotation = -3.14159
+detector = NodePath("../../SignalDetector")
 
-[node name="Military Brick" parent="Shield Generators" instance=ExtResource("31_2bd64")]
+[node name="Military Brick" parent="Shield Generators" node_paths=PackedStringArray("detector") instance=ExtResource("31_2bd64")]
 position = Vector2(-515, -325)
 rotation = -3.14159
+detector = NodePath("../../SignalDetector")
 
 [node name="BossShield" parent="Shield Generators" node_paths=PackedStringArray("detector") instance=ExtResource("30_mbkjc")]
 position = Vector2(0, -182)
-detector = NodePath("../SignalDetector")
+detector = NodePath("../../SignalDetector")
 
 [node name="Metal Bricks" type="Node" parent="."]
 
-[node name="MetalBrick" parent="Metal Bricks" instance=ExtResource("32_qlvyf")]
+[node name="MetalBrick" parent="Metal Bricks" node_paths=PackedStringArray("detector") instance=ExtResource("32_qlvyf")]
 position = Vector2(-515, -220)
+detector = NodePath("../../SignalDetector")
 
-[node name="MetalBrick2" parent="Metal Bricks" instance=ExtResource("32_qlvyf")]
+[node name="MetalBrick2" parent="Metal Bricks" node_paths=PackedStringArray("detector") instance=ExtResource("32_qlvyf")]
 position = Vector2(515, -220)
+detector = NodePath("../../SignalDetector")
 
-[node name="MetalBrick3" parent="Metal Bricks" instance=ExtResource("32_qlvyf")]
+[node name="MetalBrick3" parent="Metal Bricks" node_paths=PackedStringArray("detector") instance=ExtResource("32_qlvyf")]
 position = Vector2(-435, -260)
 rotation = 1.5708
+detector = NodePath("../../SignalDetector")
 
-[node name="MetalBrick4" parent="Metal Bricks" instance=ExtResource("32_qlvyf")]
+[node name="MetalBrick4" parent="Metal Bricks" node_paths=PackedStringArray("detector") instance=ExtResource("32_qlvyf")]
 position = Vector2(435, -260)
 rotation = 1.5708
+detector = NodePath("../../SignalDetector")
 
 [node name="Boss" parent="." node_paths=PackedStringArray("detector") instance=ExtResource("31_uvr0w")]
 position = Vector2(0, -185)
 collision_layer = 4
-detector = NodePath("../Shield Generators/SignalDetector")
+detector = NodePath("../SignalDetector")
+
+[node name="Text Box" parent="." node_paths=PackedStringArray("detector") instance=ExtResource("34_7x6oy")]
+position = Vector2(0, 100)
+detector = NodePath("../SignalDetector")
 
 [connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
 [connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]

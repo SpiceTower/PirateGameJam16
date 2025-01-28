@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://opnquw31g6jp"]
+
+[ext_resource type="Texture2D" uid="uid://ygtyfupeh231" path="res://Base Assets/Corner Shield.png" id="1_3sqso"]
+[ext_resource type="Script" path="res://Scripts/talking_boss.gd" id="1_6ydhg"]
+[ext_resource type="Texture2D" uid="uid://daqvyhgt0cpup" path="res://Base Assets/Bomb-Dude Evil Sheet Scale 1.png" id="2_mp8yw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdgpk"]
+atlas = ExtResource("2_mp8yw")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb5jt"]
+atlas = ExtResource("2_mp8yw")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a8ud"]
+atlas = ExtResource("2_mp8yw")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ia7p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdgpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb5jt")
+}],
+"loop": true,
+"name": &"Talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a8ud")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wm8fh"]
+radius = 140.0
+
+[node name="Talking Boss" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_6ydhg")
+
+[node name="Shield" type="Sprite2D" parent="."]
+position = Vector2(40, -40)
+texture = ExtResource("1_3sqso")
+
+[node name="Boss" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4ia7p")
+animation = &"Talking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-40, 40)
+shape = SubResource("CircleShape2D_wm8fh")
+
+[node name="Test Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[connection signal="timeout" from="Test Timer" to="." method="_on_test_timer_timeout"]
