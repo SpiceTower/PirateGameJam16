@@ -2,6 +2,7 @@ extends Brick
 
 @export var damagelevel = 4
 
+
 func _ready():
 	buttonbrick = true
 	

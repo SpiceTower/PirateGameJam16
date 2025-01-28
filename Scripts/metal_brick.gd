@@ -9,3 +9,7 @@ func _ready():
 	preload("res://Base Assets/Bricks Metal 2.png"),
 	preload("res://Base Assets/Bricks Metal 1.png")
 ]
+
+
+func destroy():
+	queue_free()

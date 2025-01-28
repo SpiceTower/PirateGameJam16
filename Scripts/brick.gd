@@ -5,12 +5,15 @@ extends RigidBody2D
 class_name Brick
 
 signal brick_destroyed
+signal button_press
 
 var level = 1
 var buttonbrick : bool = false
 
 @onready var sprite_2d = $Sprite2D
 @onready var collision_shape_2d = $CollisionShape2D
+
+@export var detector: Detector 
 
 var sprites: Array[Texture2D] = [
 	preload("res://Base Assets/Bricks Glass 2.png"),
@@ -35,6 +38,8 @@ func set_level(new_level: int):
 func decrease_level():
 	if level > 1:
 		set_level(level - 1)
+		if level == 1 and buttonbrick == true:
+			detector.button_press.emit()
 	elif level == 1 and buttonbrick == true:
 		pass
 	else:
@@ -47,8 +52,9 @@ func fade_out():
 	tween.tween_callback(destroy)
 
 func destroy():
-	queue_free()
 	brick_destroyed.emit()
+	detector.brick_destroyed.emit()
+	queue_free()
 
 func get_width():
 	return get_size().x
