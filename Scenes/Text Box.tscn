@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cdrlvwdm7w7kv"]
+[gd_scene load_steps=48 format=3 uid="uid://cdrlvwdm7w7kv"]
 
 [ext_resource type="Texture2D" uid="uid://cv8yrng4nj0gj" path="res://Base Assets/Test Text Box-Sheet.png" id="1_tt43t"]
 [ext_resource type="Texture2D" uid="uid://daqvyhgt0cpup" path="res://Base Assets/Bomb-Dude Evil Sheet Scale 1.png" id="2_3qafe"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/text_box.gd" id="2_r41oo"]
 [ext_resource type="Texture2D" uid="uid://bjtbmri8su0je" path="res://Base Assets/Bricks Brick 1.png" id="3_1ii2j"]
 [ext_resource type="Texture2D" uid="uid://bwnjqfbsg04r0" path="res://Base Assets/Bricks Brick 2.png" id="4_1bdjl"]
+[ext_resource type="Texture2D" uid="uid://b2ibu68hn4d3w" path="res://Base Assets/Bricks Glass 1.png" id="4_xs0ht"]
+[ext_resource type="Texture2D" uid="uid://d6trlj541eg4" path="res://Base Assets/Bricks Glass 2.png" id="5_085gn"]
 [ext_resource type="Texture2D" uid="uid://chetej87nbifi" path="res://Base Assets/Bricks Brick 3.png" id="5_o4k0g"]
 [ext_resource type="Texture2D" uid="uid://dkm6ltu1rrtqq" path="res://Base Assets/Button Brick 3.png" id="6_lgima"]
 [ext_resource type="Texture2D" uid="uid://btiytpsexkegd" path="res://Base Assets/Button Brick 4.png" id="7_krlar"]
@@ -368,6 +370,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_xs0ht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_085gn")
+}],
+"loop": false,
+"name": &"lvl one break glass",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_1ii2j")
 }, {
 "duration": 1.0,
@@ -389,6 +402,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"lvl one button",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xs0ht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_085gn")
+}],
+"loop": false,
+"name": &"lvl one crack glass",
 "speed": 5.0
 }, {
 "frames": [{
@@ -479,7 +503,7 @@ animations = [{
 
 [node name="Text Box" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_d2tmp")
-animation = &"first evil ball"
+animation = &"lvl one crack glass"
 script = ExtResource("2_r41oo")
 
 [node name="Text Delay" type="Timer" parent="."]

@@ -15,3 +15,5 @@ signal button_press
 signal boss_death
 
 signal evil_throw
+
+signal button_glass
