@@ -6,6 +6,7 @@ class_name Brick
 
 signal brick_destroyed
 signal button_press
+signal button_glass
 
 var level = 1
 var buttonbrick : bool = false
@@ -38,6 +39,8 @@ func set_level(new_level: int):
 func decrease_level():
 	if level > 1:
 		set_level(level - 1)
+		if level > 1 and buttonbrick == true:
+			detector.button_glass.emit()
 		if level == 1 and buttonbrick == true:
 			detector.button_press.emit()
 	elif level == 1 and buttonbrick == true:

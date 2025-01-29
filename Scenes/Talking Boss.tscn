@@ -45,13 +45,14 @@ radius = 140.0
 collision_layer = 4
 script = ExtResource("1_6ydhg")
 
-[node name="Shield" type="Sprite2D" parent="."]
-position = Vector2(40, -40)
-texture = ExtResource("1_3sqso")
-
 [node name="Boss" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4ia7p")
 animation = &"Talking"
+frame_progress = 0.700264
+
+[node name="Shield" type="Sprite2D" parent="."]
+position = Vector2(40, -40)
+texture = ExtResource("1_3sqso")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-40, 40)
@@ -60,5 +61,3 @@ shape = SubResource("CircleShape2D_wm8fh")
 [node name="Test Timer" type="Timer" parent="."]
 wait_time = 20.0
 autostart = true
-
-[connection signal="timeout" from="Test Timer" to="." method="_on_test_timer_timeout"]
