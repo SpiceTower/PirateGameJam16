@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bk3jfvb1lrasx" path="res://Scenes/glass_brick.tscn" id="11_t758k"]
 [ext_resource type="AudioStream" uid="uid://bcgda8hy2n03o" path="res://Sound/Bounce Sounds/G6.mp3" id="12_8k8qf"]
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="12_q3del"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="13_2w47j"]
+[ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="13_2w47j"]
 [ext_resource type="AudioStream" uid="uid://dc8vhpdcjmdpg" path="res://Sound/Bounce Sounds/G#5.mp3" id="13_gwgfd"]
 [ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="13_ujqt5"]
 [ext_resource type="AudioStream" uid="uid://ueikkn5dj21c" path="res://Sound/Bounce Sounds/No Sound.mp3" id="14_mes2i"]

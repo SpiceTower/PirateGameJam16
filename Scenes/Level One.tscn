@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://wdnxvfipscvu"]
+[gd_scene load_steps=37 format=3 uid="uid://wdnxvfipscvu"]
 
 [ext_resource type="PackedScene" uid="uid://d58y3qb4qpv1" path="res://Scenes/paddle.tscn" id="1_7t4kr"]
 [ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_hw6k5"]
@@ -27,8 +27,9 @@
 [ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="25_chjdu"]
 [ext_resource type="PackedScene" uid="uid://cvm3xjlg1v6la" path="res://Scenes/button_brick.tscn" id="26_nr78e"]
 [ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="27_p2wpn"]
+[ext_resource type="FontFile" uid="uid://q11rtuxej8xe" path="res://Base Assets/droid-sans/DroidSans-Bold.ttf" id="28_if4ob"]
 [ext_resource type="PackedScene" uid="uid://opnquw31g6jp" path="res://Scenes/Talking Boss.tscn" id="30_58vui"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="30_b6me1"]
+[ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="30_b6me1"]
 [ext_resource type="Script" path="res://Scripts/signal_detector.gd" id="30_ye0w8"]
 [ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="31_5x0en"]
 [ext_resource type="PackedScene" uid="uid://cdrlvwdm7w7kv" path="res://Scenes/Text Box.tscn" id="31_p7r3r"]
@@ -84,6 +85,10 @@ clip_14/auto_advance = 0
 clip_15/name = &"G#5"
 clip_15/stream = ExtResource("14_x6vyu")
 clip_15/auto_advance = 0
+
+[sub_resource type="Theme" id="Theme_2qfyn"]
+default_font = ExtResource("28_if4ob")
+default_font_size = 20
 
 [node name="LevelOne" type="Node" node_paths=PackedStringArray("detector")]
 script = ExtResource("1_hw6k5")
@@ -152,6 +157,42 @@ detector = NodePath("../SignalDetector")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("30_b6me1")]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.197
+anchor_top = 0.671
+anchor_right = 0.202
+anchor_bottom = 0.671
+offset_left = -226.944
+offset_top = -130.808
+offset_right = -192.704
+offset_bottom = -90.808
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="DialogBox" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.269
+anchor_top = 4.375
+anchor_right = 3.269
+anchor_bottom = 4.375
+offset_left = 15.24
+offset_right = 403.24
+offset_bottom = 145.0
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_2qfyn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.28485, 0.28485, 0.28485, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+text = "TEST TEXT LET'S GO"
+scroll_active = false
+shortcut_keys_enabled = false
+visible_characters_behavior = 1
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_5x0en")
@@ -247,9 +288,15 @@ detector = NodePath("../SignalDetector")
 [node name="Text Box" parent="." node_paths=PackedStringArray("detector") instance=ExtResource("31_p7r3r")]
 position = Vector2(13, 44)
 scale = Vector2(1.5, 1.5)
+animation = &"lvl 1 30%"
 detector = NodePath("../SignalDetector")
+
+[node name="YapTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
 
 [connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
 [connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
 [connection signal="paddle_hit" from="B411" to="Paddle" method="_on_b_411_paddle_hit"]
 [connection signal="timeout" from="B411/BounceSound/MusicTimer" to="B411/BounceSound" method="_on_music_timer_timeout"]
+[connection signal="timeout" from="YapTimer" to="." method="_on_yap_timer_timeout"]

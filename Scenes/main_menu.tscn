@@ -27,15 +27,15 @@ color = Color(0.286275, 0.431373, 0.211765, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.251
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.251
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -68.152
+offset_top = -123.0
+offset_right = 101.848
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -57,20 +57,16 @@ focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../SettingsButton")
 text = "Start Game"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
-tooltip_text = "TODO"
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../CreditsButton")
-disabled = true
 text = "Settings"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
-tooltip_text = "TODO"
 focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
-disabled = true
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
@@ -79,5 +75,59 @@ focus_neighbor_top = NodePath("../CreditsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
 text = "Quit Game"
 
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_right = -107.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Creators:
+TowerSlayer
+SeriouslySurly
+PrimePentad
+Ferch"
+vertical_alignment = 1
+
+[node name="SettingsBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.407986
+anchor_top = 0.187
+anchor_right = 0.740986
+anchor_bottom = 0.827
+offset_left = -1.0
+offset_top = -0.176003
+offset_right = 0.383911
+offset_bottom = 0.104004
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="SettingsBox"]
+layout_mode = 2
+text = "Placeholder
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_toggled"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
