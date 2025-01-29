@@ -6,6 +6,7 @@ extends AnimatedSprite2D
 @onready var text_delay: Timer = $"Text Delay"
 
 signal talk_trigger
+signal start_talking
 signal stop_talking
 
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _ready() -> void:
 
 func text_box(animation_name):
 	animated_sprite_2d.play(animation_name)
+	detector.start_talking.emit()
 
 
 

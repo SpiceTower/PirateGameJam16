@@ -16,7 +16,6 @@ func _ready() -> void:
 
 func bricks_remaining():
 	total_bricks = total_bricks - 1
-	print(total_bricks)
 	if total_bricks == 10:
 		detector.talk_trigger.emit("lvl 2 30%")
 	if total_bricks == 5:
@@ -26,10 +25,11 @@ func bricks_remaining():
 
 func generators_remaining():
 	total_generators = total_generators -1
+	print(total_generators)
 	if total_generators == 1:
 		detector.talk_trigger.emit("lvl two 1st generator destroyed")
 	if total_generators == 0:
-		detector.generator_destroyed.emit("lvl two 2nd generator destoryed")
+		detector.talk_trigger.emit("lvl two 2nd generator destroyed")
 
 func end_level_button():
 	detector.talk_trigger.emit("lvl two button")

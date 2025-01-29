@@ -17,3 +17,5 @@ signal boss_death
 signal evil_throw
 
 signal button_glass
+
+signal start_talking

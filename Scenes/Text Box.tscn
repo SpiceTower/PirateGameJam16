@@ -472,7 +472,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_o5k0v")
 }],
 "loop": false,
-"name": &"lvl two 2nd generator destoryed",
+"name": &"lvl two 2nd generator destroyed",
 "speed": 5.0
 }, {
 "frames": [{
@@ -503,7 +503,7 @@ animations = [{
 
 [node name="Text Box" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_d2tmp")
-animation = &"lvl one crack glass"
+animation = &"lvl two 2nd generator destroyed"
 script = ExtResource("2_r41oo")
 
 [node name="Text Delay" type="Timer" parent="."]
