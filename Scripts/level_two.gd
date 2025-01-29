@@ -25,7 +25,7 @@ func bricks_remaining():
 
 func generators_remaining():
 	total_generators = total_generators -1
-	print(total_generators)
+#	print(total_generators)
 	if total_generators == 1:
 		detector.talk_trigger.emit("lvl two 1st generator destroyed")
 	if total_generators == 0:
