@@ -503,7 +503,7 @@ animations = [{
 
 [node name="Text Box" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_d2tmp")
-animation = &"lvl two 2nd generator destroyed"
+animation = &"lvl three bricks"
 script = ExtResource("2_r41oo")
 
 [node name="Text Delay" type="Timer" parent="."]

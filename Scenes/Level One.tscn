@@ -93,7 +93,7 @@ detector = NodePath("SignalDetector")
 
 [node name="Paddle" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_7t4kr")]
 position = Vector2(0, 250)
-speed = 100
+collision_mask = 5
 camera = NodePath("../Camera2D")
 
 [node name="UI" parent="." instance=ExtResource("3_fojje")]
