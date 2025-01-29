@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dsgy0wcwyu6wp"]
+[gd_scene load_steps=42 format=3 uid="uid://dsgy0wcwyu6wp"]
 
 [ext_resource type="Script" path="res://Scripts/level_two.gd" id="1_mdynj"]
 [ext_resource type="PackedScene" uid="uid://d58y3qb4qpv1" path="res://Scenes/paddle.tscn" id="1_n0lfb"]
@@ -29,12 +29,13 @@
 [ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="24_1g50a"]
 [ext_resource type="AudioStream" uid="uid://dopdnuuj01wa3" path="res://Sound/Bounce Sounds/D#6.mp3" id="24_e3qoa"]
 [ext_resource type="PackedScene" uid="uid://cvm3xjlg1v6la" path="res://Scenes/button_brick.tscn" id="25_tp7op"]
-[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="26_1afng"]
+[ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="26_1afng"]
 [ext_resource type="Script" path="res://Scripts/level_music.gd" id="28_03aei"]
 [ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="29_bwesq"]
 [ext_resource type="Script" path="res://Scripts/signal_detector.gd" id="30_ecab4"]
 [ext_resource type="AudioStream" uid="uid://7a5itgdscgxd" path="res://Sound/Level 2.mp3" id="30_hiofq"]
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="30_lp3oy"]
+[ext_resource type="FontFile" uid="uid://q11rtuxej8xe" path="res://Base Assets/droid-sans/DroidSans-Bold.ttf" id="31_o687k"]
 [ext_resource type="PackedScene" uid="uid://bndjanvlw6c1l" path="res://Scenes/Shield.tscn" id="31_qqyhq"]
 [ext_resource type="PackedScene" uid="uid://opnquw31g6jp" path="res://Scenes/Talking Boss.tscn" id="36_paw7m"]
 [ext_resource type="PackedScene" uid="uid://cdrlvwdm7w7kv" path="res://Scenes/Text Box.tscn" id="38_smcdp"]
@@ -99,6 +100,10 @@ clip_18/name = &"G#6"
 clip_18/stream = ExtResource("16_8ck40")
 clip_18/auto_advance = 0
 
+[sub_resource type="Theme" id="Theme_j62di"]
+default_font = ExtResource("31_o687k")
+default_font_size = 20
+
 [node name="LevelTwo" type="Node" node_paths=PackedStringArray("detector")]
 script = ExtResource("1_mdynj")
 detector = NodePath("SignalDetector")
@@ -107,6 +112,7 @@ detector = NodePath("SignalDetector")
 
 [node name="Paddle" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_n0lfb")]
 position = Vector2(0, 250)
+collision_mask = 5
 camera = NodePath("../Camera2D")
 
 [node name="UI" parent="." instance=ExtResource("2_jsrbb")]
@@ -167,6 +173,42 @@ detector = NodePath("../SignalDetector")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("26_1afng")]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.197
+anchor_top = 0.671
+anchor_right = 0.202
+anchor_bottom = 0.671
+offset_left = -226.944
+offset_top = -130.808
+offset_right = -192.704
+offset_bottom = -90.808
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="DialogBox" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.269
+anchor_top = 4.375
+anchor_right = 3.269
+anchor_bottom = 4.375
+offset_left = 15.24
+offset_right = 403.24
+offset_bottom = 145.0
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_j62di")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.286275, 0.286275, 0.286275, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 3
+text = "TEST TEXT LET'S GO"
+scroll_active = false
+shortcut_keys_enabled = false
+visible_characters_behavior = 1
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_hiofq")
@@ -279,6 +321,11 @@ detector = NodePath("../SignalDetector")
 position = Vector2(0, 100)
 detector = NodePath("../SignalDetector")
 
+[node name="YapTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
 [connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
 [connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
 [connection signal="timeout" from="B411/BounceSound/MusicTimer" to="B411/BounceSound" method="_on_music_timer_timeout"]
+[connection signal="timeout" from="YapTimer" to="." method="_on_yap_timer_timeout"]

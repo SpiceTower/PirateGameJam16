@@ -38,3 +38,7 @@ func _on_quit_button_pressed():
 func _process(delta):
 	_on_pause_pressed()
 	
+
+func _on_reset_button_pressed():
+	resume()
+	get_tree().reload_current_scene()
