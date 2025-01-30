@@ -13,6 +13,7 @@ func _ready():
 	exposition.text = intro_text
 	$AnimationPlayer.play("fade")
 	$FadeTimer.start()
+	$AudioStreamPlayer.play()
 
 func _process(delta):
 	pass

@@ -110,6 +110,7 @@ func on_life_lost():
 		life_lost.emit()
 		ui.set_lives(lives)
 		reset_ball()
+		$LifeLostSound.play()
 
 #ran at level start and after death. resets ball position, resets music, 
 #shoots ball in random direction

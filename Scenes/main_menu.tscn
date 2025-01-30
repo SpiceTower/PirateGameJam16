@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqu754rc8tayp"]
+[gd_scene load_steps=6 format=3 uid="uid://cqu754rc8tayp"]
 
 [ext_resource type="FontFile" uid="uid://q11rtuxej8xe" path="res://Base Assets/droid-sans/DroidSans-Bold.ttf" id="1_4qp4s"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tupe3"]
+[ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="3_kap5o"]
+[ext_resource type="Script" path="res://Scripts/mute_button.gd" id="4_df1sw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eigmk"]
 font = ExtResource("1_4qp4s")
@@ -95,10 +97,10 @@ vertical_alignment = 1
 [node name="SettingsBox" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.407986
-anchor_top = 0.187
-anchor_right = 0.740986
-anchor_bottom = 0.827
+anchor_left = 0.467882
+anchor_top = 0.193173
+anchor_right = 0.64984
+anchor_bottom = 0.833173
 offset_left = -1.0
 offset_top = -0.176003
 offset_right = 0.383911
@@ -109,21 +111,23 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SettingsBox"]
 layout_mode = 2
-text = "Placeholder
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings"
+text = "Settngs:"
 horizontal_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="SettingsBox"]
+layout_mode = 2
+text = "Volume:"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsBox"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("3_kap5o")
+
+[node name="MuteButton" type="CheckButton" parent="SettingsBox"]
+layout_mode = 2
+text = "Mute:"
+script = ExtResource("4_df1sw")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
@@ -131,3 +135,8 @@ horizontal_alignment = 1
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="toggled" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_toggled"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_exited" from="SettingsBox/VolumeSlider" to="SettingsBox/VolumeSlider" method="_on_mouse_exited"]
+[connection signal="value_changed" from="SettingsBox/VolumeSlider" to="SettingsBox/MuteButton" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="SettingsBox/VolumeSlider" to="SettingsBox/VolumeSlider" method="_on_value_changed"]
+[connection signal="toggled" from="SettingsBox/MuteButton" to="SettingsBox/MuteButton" method="_on_toggled"]
+[connection signal="toggled" from="SettingsBox/MuteButton" to="SettingsBox/VolumeSlider" method="_on_mute_button_toggled"]

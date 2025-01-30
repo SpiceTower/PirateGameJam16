@@ -31,9 +31,9 @@
 [ext_resource type="PackedScene" uid="uid://opnquw31g6jp" path="res://Scenes/Talking Boss.tscn" id="30_58vui"]
 [ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="30_b6me1"]
 [ext_resource type="Script" path="res://Scripts/signal_detector.gd" id="30_ye0w8"]
-[ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/Level 1 (pre-final draft).mp3" id="31_5x0en"]
+[ext_resource type="AudioStream" uid="uid://c3o80jq7s3x4q" path="res://Sound/B.411's Allegiance.mp3" id="31_5x0en"]
 [ext_resource type="PackedScene" uid="uid://cdrlvwdm7w7kv" path="res://Scenes/Text Box.tscn" id="31_p7r3r"]
-[ext_resource type="Script" path="res://Scripts/level_music.gd" id="32_b87hj"]
+[ext_resource type="Script" path="res://Scripts/level_onemusic.gd" id="33_wt2gf"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_o0sgs"]
 clip_count = 16
@@ -90,6 +90,21 @@ clip_15/auto_advance = 0
 default_font = ExtResource("28_if4ob")
 default_font_size = 20
 
+[sub_resource type="Animation" id="Animation_qqw1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_o17oo"]
 resource_name = "fade"
 length = 2.0
@@ -104,21 +119,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_qqw1e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mst7u"]
@@ -172,7 +172,7 @@ ui = NodePath("../UI")
 
 [node name="BounceSound" type="AudioStreamPlayer" parent="B411"]
 stream = SubResource("AudioStreamInteractive_o0sgs")
-volume_db = -6.0
+volume_db = -9.0
 script = ExtResource("23_f1ks6")
 
 [node name="MusicTimer" type="Timer" parent="B411/BounceSound"]
@@ -239,12 +239,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("31_5x0en")
-volume_db = -12.0
-parameters/looping = true
-script = ExtResource("32_b87hj")
 
 [node name="All the Bricks" type="Node" parent="."]
 
@@ -350,8 +344,13 @@ libraries = {
 "": SubResource("AnimationLibrary_mst7u")
 }
 
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_5x0en")
+volume_db = -12.0
+parameters/looping = true
+script = ExtResource("33_wt2gf")
+
 [connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
-[connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
 [connection signal="paddle_hit" from="B411" to="Paddle" method="_on_b_411_paddle_hit"]
 [connection signal="timeout" from="B411/BounceSound/MusicTimer" to="B411/BounceSound" method="_on_music_timer_timeout"]
 [connection signal="timeout" from="YapTimer" to="." method="_on_yap_timer_timeout"]

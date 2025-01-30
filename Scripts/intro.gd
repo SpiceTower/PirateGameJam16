@@ -12,6 +12,7 @@ func _ready():
 	exposition.visible_ratio = 1.0
 	exposition.text = intro_text
 
+
 func _process(delta):
 	pass
 
@@ -19,6 +20,7 @@ func _on_start_button_pressed():
 	$CanvasLayer/StartButton.hide()
 	$AnimationPlayer.play("fade")
 	$FadeTimer.start()
+	$AudioStreamPlayer.play()
 
 func _on_fade_timer_timeout():
 	$AnimatedSprite2D.play("default")

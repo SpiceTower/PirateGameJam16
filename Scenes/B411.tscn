@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bivm5gnaegrgl"]
+[gd_scene load_steps=24 format=3 uid="uid://bivm5gnaegrgl"]
 
 [ext_resource type="Script" path="res://Scripts/B411.gd" id="1_3d5fd"]
 [ext_resource type="Texture2D" uid="uid://kqnkoutxwot" path="res://Base Assets/B411-Sheet.png" id="2_5redj"]
 [ext_resource type="Texture2D" uid="uid://db6e0phbybewe" path="res://Base Assets/B411 v2-Sheet.png" id="2_ejnlm"]
+[ext_resource type="AudioStream" uid="uid://bbbqji8h735or" path="res://Sound/Life Lost.mp3" id="4_rjilt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e32y1"]
 atlas = ExtResource("2_5redj")
@@ -171,5 +172,9 @@ shape = SubResource("CircleShape2D_3qlrv")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="LifeLostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rjilt")
+volume_db = -8.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
