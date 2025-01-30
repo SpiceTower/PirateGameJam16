@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bktwrpbcoi2wp"]
+[gd_scene load_steps=15 format=3 uid="uid://bktwrpbcoi2wp"]
 
 [ext_resource type="Script" path="res://Scripts/debrief_level_3.gd" id="1_1nx4a"]
 [ext_resource type="Texture2D" uid="uid://cnrnkqxegubts" path="res://Base Assets/Lvl 3 Game Cut Scene-Sheet.png" id="2_o26df"]
+[ext_resource type="AudioStream" uid="uid://dq6mrpjuhfnsl" path="res://Sound/Level 3 Interstital.mp3" id="3_5snh2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_48jq0"]
 atlas = ExtResource("2_o26df")
@@ -152,6 +153,10 @@ libraries = {
 
 [node name="FadeTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5snh2")
+volume_db = -3.0
 
 [connection signal="pressed" from="CanvasLayer/Control/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]

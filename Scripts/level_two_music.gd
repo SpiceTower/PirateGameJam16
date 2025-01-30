@@ -1,8 +1,7 @@
 extends AudioStreamPlayer
 
-func _on_b_411_life_start():
-	if playing == false:
-		play()
+func _ready():
+	play()
 
 var chord_list = [
 	[15, 4, 9],
@@ -54,10 +53,3 @@ var chord_list = [
 	[15, 4, 9],
 	[8, 15, 4]
 ]
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass

@@ -87,12 +87,14 @@ func end_level():
 	$EndLevel.start()
 	$B411.ball_speed = 0
 	$CanvasLayer/Curtains.show()
+	await get_tree().create_timer(2.0).timeout
 	$AnimationPlayer.play("fade")
 	
 func false_victory():
 	$FalseVictory.start()
 	$B411.ball_speed = 0
 	$CanvasLayer/Curtains.show()
+	await get_tree().create_timer(2.0).timeout
 	$AnimationPlayer.play("fade")
 
 func _on_end_level_timeout():

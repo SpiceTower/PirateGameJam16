@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://brlsd4nhr6x0v"]
+[gd_scene load_steps=15 format=3 uid="uid://brlsd4nhr6x0v"]
 
 [ext_resource type="Script" path="res://Scripts/debrief_level_1.gd" id="1_cqm3g"]
 [ext_resource type="Texture2D" uid="uid://pdcvc48edwn8" path="res://Base Assets/Pre Game Cut Scene-Sheet.png" id="2_3j3me"]
 [ext_resource type="Theme" uid="uid://d10jfld33lmc3" path="res://Base Assets/Text/presentation.tres" id="3_rinkp"]
+[ext_resource type="AudioStream" uid="uid://dp1psf82o3jjk" path="res://Sound/Interstitial Music.mp3" id="4_tu6vk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klppa"]
 atlas = ExtResource("2_3j3me")
@@ -145,6 +146,10 @@ libraries = {
 
 [node name="FadeTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tu6vk")
+volume_db = -12.0
 
 [connection signal="pressed" from="CanvasLayer/Control/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]

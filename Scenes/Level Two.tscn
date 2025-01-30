@@ -30,13 +30,13 @@
 [ext_resource type="AudioStream" uid="uid://dopdnuuj01wa3" path="res://Sound/Bounce Sounds/D#6.mp3" id="24_e3qoa"]
 [ext_resource type="PackedScene" uid="uid://cvm3xjlg1v6la" path="res://Scenes/button_brick.tscn" id="25_tp7op"]
 [ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="26_1afng"]
-[ext_resource type="Script" path="res://Scripts/level_music.gd" id="28_03aei"]
 [ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="29_bwesq"]
 [ext_resource type="Script" path="res://Scripts/signal_detector.gd" id="30_ecab4"]
-[ext_resource type="AudioStream" uid="uid://7a5itgdscgxd" path="res://Sound/Level 2.mp3" id="30_hiofq"]
+[ext_resource type="AudioStream" uid="uid://7a5itgdscgxd" path="res://Sound/B.411's Treachery.mp3" id="30_hiofq"]
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="30_lp3oy"]
 [ext_resource type="FontFile" uid="uid://q11rtuxej8xe" path="res://Base Assets/droid-sans/DroidSans-Bold.ttf" id="31_o687k"]
 [ext_resource type="PackedScene" uid="uid://bndjanvlw6c1l" path="res://Scenes/Shield.tscn" id="31_qqyhq"]
+[ext_resource type="Script" path="res://Scripts/level_two_music.gd" id="33_stiwv"]
 [ext_resource type="PackedScene" uid="uid://opnquw31g6jp" path="res://Scenes/Talking Boss.tscn" id="36_paw7m"]
 [ext_resource type="PackedScene" uid="uid://cdrlvwdm7w7kv" path="res://Scenes/Text Box.tscn" id="38_smcdp"]
 
@@ -104,6 +104,21 @@ clip_18/auto_advance = 0
 default_font = ExtResource("31_o687k")
 default_font_size = 20
 
+[sub_resource type="Animation" id="Animation_qqw1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_o17oo"]
 resource_name = "fade"
 length = 2.0
@@ -118,21 +133,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_qqw1e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mst7u"]
@@ -260,7 +260,7 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("30_hiofq")
 volume_db = -12.0
 parameters/looping = true
-script = ExtResource("28_03aei")
+script = ExtResource("33_stiwv")
 
 [node name="SignalDetector" type="Node" parent="."]
 script = ExtResource("30_ecab4")
@@ -372,7 +372,7 @@ wait_time = 7.0
 one_shot = true
 
 [node name="EndLevel" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 
 [node name="FalseVictory" type="Timer" parent="."]
 wait_time = 2.0
