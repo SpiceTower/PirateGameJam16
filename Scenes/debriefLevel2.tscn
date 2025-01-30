@@ -1,0 +1,150 @@
+[gd_scene load_steps=14 format=3 uid="uid://cy7sb4nwu8vuc"]
+
+[ext_resource type="Script" path="res://Scripts/debrief_level_2.gd" id="1_wwfhq"]
+[ext_resource type="Texture2D" uid="uid://pdcvc48edwn8" path="res://Base Assets/Pre Game Cut Scene-Sheet.png" id="2_ln46h"]
+[ext_resource type="Theme" uid="uid://d10jfld33lmc3" path="res://Base Assets/Text/presentation.tres" id="3_twxvh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klppa"]
+atlas = ExtResource("2_ln46h")
+region = Rect2(0, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ohad"]
+atlas = ExtResource("2_ln46h")
+region = Rect2(576, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr8jc"]
+atlas = ExtResource("2_ln46h")
+region = Rect2(1152, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejsta"]
+atlas = ExtResource("2_ln46h")
+region = Rect2(1728, 0, 576, 324)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0vv8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klppa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ohad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr8jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejsta")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Theme" id="Theme_6tdkd"]
+default_font_size = 30
+
+[sub_resource type="Animation" id="Animation_ygjdc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7g3vs"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n63m6"]
+resource_name = "intro_yap"
+length = 15.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bfo6x"]
+_data = {
+"RESET": SubResource("Animation_ygjdc"),
+"fade": SubResource("Animation_7g3vs"),
+"intro_yap": SubResource("Animation_n63m6")
+}
+
+[node name="Debrief2" type="Node2D"]
+script = ExtResource("1_wwfhq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r0vv8")
+frame_progress = 0.416471
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Exposition" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 96.0
+offset_right = 1060.0
+offset_bottom = 404.0
+theme = ExtResource("3_twxvh")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="NextButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 45.754
+anchor_top = 25.329
+anchor_right = 54.775
+anchor_bottom = 30.151
+offset_left = -826.16
+offset_top = -463.16
+offset_right = -1110.0
+offset_bottom = -606.04
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_6tdkd")
+text = "Next"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bfo6x")
+}
+
+[node name="FadeTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="pressed" from="CanvasLayer/Control/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]

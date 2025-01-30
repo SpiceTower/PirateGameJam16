@@ -60,14 +60,17 @@ func generators_remaining():
 func end_level_button():
 	dialog_box.text = "You’ve made a grave mistake, and a terrible enemy this day. B.411, you FOOL!"
 	yap()
+	BackgroundProcess.second_rebel()
+	end_level()
 	#detector.talk_trigger.emit("lvl two button")
 	
 func end_level_bricks():
-	pass
+	false_victory()
 	#detector.talk_trigger.emit("lvl two bricks")
 	
 func yap():
 	text_duration = dialog_box.text.length() / 30.0
+	$YapTimer.wait_time = text_duration + 5.0
 	$"Talking Boss".start_talk()
 	if tween:
 		tween.kill()
@@ -79,3 +82,21 @@ func yap():
 func _on_yap_timer_timeout():
 	dialog_box.visible_ratio = 0.0
 	$"Talking Boss".stop_talk()
+
+func end_level():
+	$EndLevel.start()
+	$B411.ball_speed = 0
+	$CanvasLayer/Curtains.show()
+	$AnimationPlayer.play("fade")
+	
+func false_victory():
+	$FalseVictory.start()
+	$B411.ball_speed = 0
+	$CanvasLayer/Curtains.show()
+	$AnimationPlayer.play("fade")
+
+func _on_end_level_timeout():
+	get_tree().change_scene_to_file("res://Scenes/debriefLevel3.tscn")
+
+func _on_false_victory_timeout():
+	pass #Set false victory scene
