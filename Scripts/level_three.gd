@@ -57,6 +57,7 @@ func evil_ball():
 
 func yap():
 	text_duration = dialog_box.text.length() / 30.0
+	$YapTimer.wait_time = text_duration + 5.0
 	if tween:
 		tween.kill()
 	tween = create_tween()

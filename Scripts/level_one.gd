@@ -19,6 +19,7 @@ func _ready() -> void:
 	detector.button_press.connect(end_level_button)
 	detector.button_glass.connect(glass_break)
 	dialog_box.visible_ratio = 0.0
+	$CanvasLayer/Curtains.hide()
 
 func bricks_remaining():
 	total_bricks = total_bricks - 1
@@ -37,10 +38,12 @@ func bricks_remaining():
 func end_level_button():
 	dialog_box.text = "No, that’s not supposed to- AAAAAHHHHH!!!"
 	yap()
+	BackgroundProcess.first_rebel()
+	end_level()
 	#detector.talk_trigger.emit("lvl one button")
 	
 func end_level_bricks():
-	pass
+	end_level()
 	#detector.talk_trigger.emit("lvl one bricks")
 
 func glass_break():
@@ -56,6 +59,7 @@ func glass_break():
 
 func yap():
 	text_duration = dialog_box.text.length() / 30.0
+	$YapTimer.wait_time = text_duration + 5.0
 	$"Talking Boss".start_talk()
 	if tween:
 		tween.kill()
@@ -67,3 +71,12 @@ func yap():
 func _on_yap_timer_timeout():
 	dialog_box.visible_ratio = 0.0
 	$"Talking Boss".stop_talk()
+
+func end_level():
+	$EndLevel.start()
+	$B411.ball_speed = 0
+	$CanvasLayer/Curtains.show()
+	$AnimationPlayer.play("fade")
+	
+func _on_end_level_timeout():
+	get_tree().change_scene_to_file("res://Scenes/debriefLevel2.tscn")

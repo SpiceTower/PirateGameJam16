@@ -20,12 +20,14 @@ func reset_bgp():
 
 func first_rebel():
 	rebel1 = true
+	extra_life()
 
 func get_rebel_one():
 	return rebel1
 
 func second_rebel():
 	rebel2 = true
+	extra_life()
 
 func get_rebel_two():
 	return rebel2

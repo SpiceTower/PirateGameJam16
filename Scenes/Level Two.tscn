@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dsgy0wcwyu6wp"]
+[gd_scene load_steps=45 format=3 uid="uid://dsgy0wcwyu6wp"]
 
 [ext_resource type="Script" path="res://Scripts/level_two.gd" id="1_mdynj"]
 [ext_resource type="PackedScene" uid="uid://d58y3qb4qpv1" path="res://Scenes/paddle.tscn" id="1_n0lfb"]
@@ -103,6 +103,43 @@ clip_18/auto_advance = 0
 [sub_resource type="Theme" id="Theme_j62di"]
 default_font = ExtResource("31_o687k")
 default_font_size = 20
+
+[sub_resource type="Animation" id="Animation_o17oo"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qqw1e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mst7u"]
+_data = {
+"RESET": SubResource("Animation_qqw1e"),
+"fade": SubResource("Animation_o17oo")
+}
 
 [node name="LevelTwo" type="Node" node_paths=PackedStringArray("detector")]
 script = ExtResource("1_mdynj")
@@ -209,6 +246,15 @@ text = "TEST TEXT LET'S GO"
 scroll_active = false
 shortcut_keys_enabled = false
 visible_characters_behavior = 1
+
+[node name="Curtains" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_hiofq")
@@ -325,7 +371,21 @@ detector = NodePath("../SignalDetector")
 wait_time = 7.0
 one_shot = true
 
+[node name="EndLevel" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="FalseVictory" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer/Curtains")
+libraries = {
+"": SubResource("AnimationLibrary_mst7u")
+}
+
 [connection signal="life_start" from="B411" to="B411/BounceSound" method="_on_b_411_life_start"]
 [connection signal="life_start" from="B411" to="LevelMusic" method="_on_b_411_life_start"]
 [connection signal="timeout" from="B411/BounceSound/MusicTimer" to="B411/BounceSound" method="_on_music_timer_timeout"]
 [connection signal="timeout" from="YapTimer" to="." method="_on_yap_timer_timeout"]
+[connection signal="timeout" from="EndLevel" to="." method="_on_end_level_timeout"]
+[connection signal="timeout" from="FalseVictory" to="." method="_on_false_victory_timeout"]
