@@ -1,15 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://cebjfyfut4tc"]
+[gd_scene load_steps=11 format=3 uid="uid://cebjfyfut4tc"]
 
 [ext_resource type="Shader" path="res://Base Assets/Shaders/pause_menu.gdshader" id="1_hafag"]
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_k3bfx"]
-[ext_resource type="FontFile" uid="uid://q11rtuxej8xe" path="res://Base Assets/droid-sans/DroidSans-Bold.ttf" id="2_0ba3s"]
+[ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="3_njpab"]
+[ext_resource type="Script" path="res://Scripts/mute_button.gd" id="4_ht6et"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sld7n"]
 shader = ExtResource("1_hafag")
 shader_parameter/lod = 0.0
 
+[sub_resource type="FontFile" id="FontFile_ol2vj"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_c8k34"]
-font = ExtResource("2_0ba3s")
+font = SubResource("FontFile_ol2vj")
 font_size = 32
 
 [sub_resource type="Animation" id="Animation_mrbc7"]
@@ -185,6 +201,21 @@ focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../MainMenuButton")
 text = "Reset"
 
+[node name="VolumeLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume:"
+
+[node name="VolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("3_njpab")
+
+[node name="MuteButton" type="CheckButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mute:"
+script = ExtResource("4_ht6et")
+
 [node name="MainMenuButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ResumeButton")
@@ -204,5 +235,8 @@ libraries = {
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/VolumeSlider" to="PanelContainer/VBoxContainer/VolumeSlider" method="_on_mouse_exited"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/VolumeSlider" to="PanelContainer/VBoxContainer/VolumeSlider" method="_on_value_changed"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/MuteButton" to="PanelContainer/VBoxContainer/MuteButton" method="_on_toggled"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

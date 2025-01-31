@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="25_chjdu"]
 [ext_resource type="PackedScene" uid="uid://cvm3xjlg1v6la" path="res://Scenes/button_brick.tscn" id="26_nr78e"]
 [ext_resource type="PackedScene" uid="uid://b8khkawdk30nh" path="res://Scenes/brick_brick.tscn" id="27_p2wpn"]
-[ext_resource type="FontFile" uid="uid://q11rtuxej8xe" path="res://Base Assets/droid-sans/DroidSans-Bold.ttf" id="28_if4ob"]
 [ext_resource type="PackedScene" uid="uid://opnquw31g6jp" path="res://Scenes/Talking Boss.tscn" id="30_58vui"]
 [ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="30_b6me1"]
 [ext_resource type="Script" path="res://Scripts/signal_detector.gd" id="30_ye0w8"]
@@ -86,8 +85,20 @@ clip_15/name = &"G#5"
 clip_15/stream = ExtResource("14_x6vyu")
 clip_15/auto_advance = 0
 
+[sub_resource type="FontFile" id="FontFile_ftxwx"]
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
 [sub_resource type="Theme" id="Theme_2qfyn"]
-default_font = ExtResource("28_if4ob")
+default_font = SubResource("FontFile_ftxwx")
 default_font_size = 20
 
 [sub_resource type="Animation" id="Animation_qqw1e"]
@@ -337,6 +348,7 @@ one_shot = true
 
 [node name="EndLevel" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CanvasLayer/Curtains")

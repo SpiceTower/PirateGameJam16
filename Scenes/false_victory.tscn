@@ -1,45 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cy7sb4nwu8vuc"]
+[gd_scene load_steps=9 format=3 uid="uid://myamdhu8jx4r"]
 
-[ext_resource type="Script" path="res://Scripts/debrief_level_2.gd" id="1_wwfhq"]
-[ext_resource type="Texture2D" uid="uid://pdcvc48edwn8" path="res://Base Assets/Pre Game Cut Scene-Sheet.png" id="2_ln46h"]
-[ext_resource type="Theme" uid="uid://d10jfld33lmc3" path="res://Base Assets/Text/presentation.tres" id="3_twxvh"]
-[ext_resource type="AudioStream" uid="uid://dp1psf82o3jjk" path="res://Sound/Interstitial Music.mp3" id="4_kbs4v"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klppa"]
-atlas = ExtResource("2_ln46h")
-region = Rect2(0, 0, 576, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ohad"]
-atlas = ExtResource("2_ln46h")
-region = Rect2(576, 0, 576, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nr8jc"]
-atlas = ExtResource("2_ln46h")
-region = Rect2(1152, 0, 576, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejsta"]
-atlas = ExtResource("2_ln46h")
-region = Rect2(1728, 0, 576, 324)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r0vv8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_klppa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ohad")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nr8jc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ejsta")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" path="res://Scripts/false_victory.gd" id="1_ohd5w"]
+[ext_resource type="Texture2D" uid="uid://np7odqrvmm3a" path="res://Base Assets/Bad Ending.png" id="2_aecsb"]
+[ext_resource type="AudioStream" uid="uid://bkymml382x5rl" path="res://Sound/Bad Ending.mp3" id="3_kae7n"]
 
 [sub_resource type="Theme" id="Theme_6tdkd"]
 default_font_size = 30
@@ -86,14 +49,13 @@ _data = {
 "intro_yap": SubResource("Animation_n63m6")
 }
 
-[node name="Debrief2" type="Node2D"]
-script = ExtResource("1_wwfhq")
+[node name="FalseVictory" type="Node2D"]
+script = ExtResource("1_ohd5w")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_r0vv8")
-frame_progress = 0.416471
+texture = ExtResource("2_aecsb")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -103,24 +65,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Exposition" type="RichTextLabel" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 96.0
-offset_right = 1060.0
-offset_bottom = 404.0
-theme = ExtResource("3_twxvh")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-scroll_active = false
-shortcut_keys_enabled = false
-
 [node name="NextButton" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 45.754
-anchor_top = 25.329
+anchor_left = 43.404
+anchor_top = 25.604
 anchor_right = 54.775
-anchor_bottom = 30.151
+anchor_bottom = 30.426
 offset_left = -826.16
 offset_top = -463.16
 offset_right = -1110.0
@@ -128,7 +79,7 @@ offset_bottom = -606.04
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_6tdkd")
-text = "Next"
+text = "Main Menu"
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -149,8 +100,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_kbs4v")
-volume_db = -12.0
+stream = ExtResource("3_kae7n")
+volume_db = -3.0
 
 [connection signal="pressed" from="CanvasLayer/Control/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]

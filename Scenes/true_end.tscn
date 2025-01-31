@@ -1,45 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbtmas4fypidq"]
+[gd_scene load_steps=10 format=3 uid="uid://c61tidqfnvgqw"]
 
-[ext_resource type="Texture2D" uid="uid://pdcvc48edwn8" path="res://Base Assets/Pre Game Cut Scene-Sheet.png" id="1_b1ivk"]
-[ext_resource type="Script" path="res://Scripts/intro.gd" id="1_wvael"]
-[ext_resource type="Theme" uid="uid://d10jfld33lmc3" path="res://Base Assets/Text/presentation.tres" id="3_62p6o"]
-[ext_resource type="AudioStream" uid="uid://c8yvg4xg6fidq" path="res://Sound/Backstory Anthem.mp3" id="4_tebt7"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klppa"]
-atlas = ExtResource("1_b1ivk")
-region = Rect2(0, 0, 576, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ohad"]
-atlas = ExtResource("1_b1ivk")
-region = Rect2(576, 0, 576, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nr8jc"]
-atlas = ExtResource("1_b1ivk")
-region = Rect2(1152, 0, 576, 324)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejsta"]
-atlas = ExtResource("1_b1ivk")
-region = Rect2(1728, 0, 576, 324)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r0vv8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_klppa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ohad")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nr8jc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ejsta")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" path="res://Scripts/true_end.gd" id="1_le8hm"]
+[ext_resource type="Texture2D" uid="uid://fuoi4esfr4nn" path="res://Base Assets/Win part 2.png" id="2_yyje8"]
+[ext_resource type="AudioStream" uid="uid://c3o5y6ihunxcl" path="res://Sound/Victory.mp3" id="3_mpkjo"]
 
 [sub_resource type="Theme" id="Theme_6tdkd"]
 default_font_size = 30
@@ -86,14 +49,16 @@ _data = {
 "intro_yap": SubResource("Animation_n63m6")
 }
 
-[node name="Intro" type="Node2D"]
-script = ExtResource("1_wvael")
+[sub_resource type="Theme" id="Theme_x516h"]
+default_font_size = 45
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="TrueEnd" type="Node2D"]
+script = ExtResource("1_le8hm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_r0vv8")
-frame_progress = 0.416471
+texture = ExtResource("2_yyje8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -102,17 +67,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Exposition" type="RichTextLabel" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 102.0
-offset_top = 96.0
-offset_right = 1060.0
-offset_bottom = 404.0
-theme = ExtResource("3_62p6o")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-scroll_active = false
-shortcut_keys_enabled = false
 
 [node name="NextButton" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -128,7 +82,8 @@ offset_bottom = -606.04
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_6tdkd")
-text = "Next"
+text = "Main Menu
+(Great Job!)"
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -138,20 +93,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="StartButton" type="Button" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -15.5
-offset_right = 42.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "[Initialize]"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -163,9 +104,20 @@ wait_time = 2.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_tebt7")
-volume_db = -12.0
+stream = ExtResource("3_mpkjo")
+volume_db = -3.0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1150.0
+offset_bottom = 188.0
+theme = SubResource("Theme_x516h")
+theme_override_colors/font_color = Color(1, 0.560784, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "Congratulations!
+
+Thank you so much for playing!"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/Control/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]

@@ -101,4 +101,4 @@ func _on_end_level_timeout():
 	get_tree().change_scene_to_file("res://Scenes/debriefLevel3.tscn")
 
 func _on_false_victory_timeout():
-	pass #Set false victory scene
+	get_tree().change_scene_to_file("res://Scenes/false_victory.tscn")
