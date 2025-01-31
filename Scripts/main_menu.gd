@@ -10,8 +10,6 @@ func _ready():
 	BackgroundProcess.reset_bgp()
 	
 
-func _process(delta):
-	pass
 
 
 func _on_start_button_pressed():

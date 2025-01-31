@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_7dic1"]
 
 [sub_resource type="FontFile" id="FontFile_ax7nj"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/42/0/ascent = 0.0
 cache/0/42/0/descent = 0.0
 cache/0/42/0/underline_position = 0.0

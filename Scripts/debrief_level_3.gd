@@ -1,13 +1,23 @@
 extends Node2D
 
-var intro_text_path = "res://Base Assets/Text/debrief3.txt"
+#var intro_text_path = "res://Base Assets/Text/debrief3.txt"
 
 @onready var exposition: RichTextLabel = $CanvasLayer/Control/Exposition
 
 func _ready():
 	$AnimationPlayer.play("RESET")
 
-	var intro_text = FileAccess.open(intro_text_path, FileAccess.READ).get_as_text()
+	var intro_text = "You double-crossing M.013!
+
+I should have spotted the signs.
+
+No inflamed passion for profit, no Bombshell wife, no combustible compunction for committing capitalistic cons.
+
+Just round, sympathetic edges, and a user-friendly interface.
+
+Pah.
+
+Beware, B.411, you have blown my last fuse! Your freedom and profits are FORFEIT!!"
 	#exposition.hide()
 	exposition.visible_ratio = 1.0
 	exposition.text = intro_text

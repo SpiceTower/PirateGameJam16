@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void: #manages all movement of the ball, 
 	$BounceSound.play_bounce_sound()
 
 #attempting to add player input to effect the ball
-func _input(event):
+func _input(_event):
 	if player_control == false:
 		return
 	if Input.is_action_just_pressed("Up") and boost_ready == true:
