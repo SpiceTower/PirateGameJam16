@@ -1,0 +1,282 @@
+[gd_scene load_steps=35 format=3 uid="uid://d3vf6lqpg7qwq"]
+
+[ext_resource type="Script" path="res://Scripts/funeral.gd" id="1_1bxbc"]
+[ext_resource type="Texture2D" uid="uid://c5hdb04tncqrh" path="res://Base Assets/Win part 1 - 24 frames.png" id="2_q0dsw"]
+[ext_resource type="AudioStream" uid="uid://dbflaeddtgj1e" path="res://Sound/Bad Man Funeral.mp3" id="3_1bjxx"]
+[ext_resource type="AudioStream" uid="uid://dusyu04xcf7r7" path="res://Sound/486166__ruben_uitenweerde__glass-breaking.wav" id="4_jetm4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuhwi"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(0, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hdkx"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(0, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j61ph"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(576, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tn2n"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(1152, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmkdc"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(1728, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qac5p"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(2304, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg7mh"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(2880, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k443"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(3456, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmi8p"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(4032, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6os6g"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(4608, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shj1g"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(5184, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a73u3"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(5760, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1552h"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(6336, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0maj4"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(6912, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2ftc"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(7488, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ly7x"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(8064, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btwhn"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(8640, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vr6v"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(9216, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38xbe"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(9792, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36rce"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(10368, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aue5"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(10944, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf68y"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(11520, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwnbx"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(12096, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm2em"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(12672, 0, 576, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1avms"]
+atlas = ExtResource("2_q0dsw")
+region = Rect2(13248, 0, 576, 324)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0vv8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuhwi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hdkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j61ph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tn2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmkdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qac5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg7mh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k443")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmi8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6os6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shj1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a73u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1552h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0maj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2ftc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ly7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btwhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vr6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38xbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36rce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aue5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf68y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwnbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm2em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1avms")
+}],
+"loop": false,
+"name": &"the end",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_ygjdc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7g3vs"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n63m6"]
+resource_name = "intro_yap"
+length = 15.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bfo6x"]
+_data = {
+"RESET": SubResource("Animation_ygjdc"),
+"fade": SubResource("Animation_7g3vs"),
+"intro_yap": SubResource("Animation_n63m6")
+}
+
+[node name="Funeral" type="Node2D"]
+script = ExtResource("1_1bxbc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r0vv8")
+animation = &"the end"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Cover" type="ColorRect" parent="CanvasLayer"]
+offset_left = -6.0
+offset_right = 1155.0
+offset_bottom = 50.0
+color = Color(0.129412, 0.129412, 0.129412, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bfo6x")
+}
+
+[node name="FadeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1bjxx")
+volume_db = -3.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jetm4")
+
+[node name="ShadesTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
+[connection signal="timeout" from="ShadesTimer" to="." method="_on_shades_timer_timeout"]

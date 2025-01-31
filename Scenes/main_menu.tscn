@@ -1,13 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqu754rc8tayp"]
 
-[ext_resource type="FontFile" uid="uid://q11rtuxej8xe" path="res://Base Assets/droid-sans/DroidSans-Bold.ttf" id="1_4qp4s"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tupe3"]
+[ext_resource type="Texture2D" uid="uid://bp3mnyqsv7uf" path="res://Base Assets/Title Screen.png" id="2_vc7oy"]
 [ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="3_kap5o"]
 [ext_resource type="Script" path="res://Scripts/mute_button.gd" id="4_df1sw"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_eigmk"]
-font = ExtResource("1_4qp4s")
-font_size = 32
+[sub_resource type="Theme" id="Theme_melmk"]
+default_font_size = 12
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,13 +17,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tupe3")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 325)
+scale = Vector2(2, 2)
+texture = ExtResource("2_vc7oy")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = 173.0
+offset_right = 47.0
+offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.15953, 0.172188)
+color = Color(0.286275, 0.431373, 0.211765, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 394.0
+offset_right = 8.0
+offset_bottom = 394.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.131691, 0.172188)
+color = Color(0.286275, 0.431373, 0.211765, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 981.0
+offset_top = 22.0
+offset_right = 981.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.124937, 0.921113)
 color = Color(0.286275, 0.431373, 0.211765, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -34,24 +73,12 @@ anchor_left = 0.251
 anchor_top = 0.5
 anchor_right = 0.251
 anchor_bottom = 0.5
-offset_left = -68.152
-offset_top = -123.0
-offset_right = 101.848
-offset_bottom = 123.0
+offset_left = -235.152
+offset_top = -144.0
+offset_right = -65.152
+offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Bricked-Up
-Bomber"
-label_settings = SubResource("LabelSettings_eigmk")
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "(Name Pending)"
-horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -72,6 +99,7 @@ focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_neighbor_top = NodePath("../CreditsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
@@ -83,24 +111,51 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -217.0
-offset_right = -107.0
+offset_left = -163.0
+offset_top = 40.0
+offset_right = 1.0
+offset_bottom = 75.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Creators:
+theme = SubResource("Theme_melmk")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Credits:
+Made by Spice Tower Entertainment
+
+Art/Animation:
 TowerSlayer
-SeriouslySurly
+
+Sound/Music:
 PrimePentad
+
+Programming:
+Ferch
+PrimePentad
+SeriouslySurly
+TowerSlayer
+
+Writing:
+Ferch
+SeriouslySurly
+
+Testing:
+Ferch
+PrimePentad
+SeriouslySurly
+TowerSlayer
+
+Trumpet:
 Ferch"
-vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="SettingsBox" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.467882
-anchor_top = 0.193173
-anchor_right = 0.64984
-anchor_bottom = 0.833173
+anchor_left = 0.0147569
+anchor_top = 0.608296
+anchor_right = 0.130743
+anchor_bottom = 0.780704
 offset_left = -1.0
 offset_top = -0.176003
 offset_right = 0.383911
@@ -111,7 +166,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SettingsBox"]
 layout_mode = 2
-text = "Settngs:"
+text = "Settings:"
 horizontal_alignment = 1
 
 [node name="VolumeLabel" type="Label" parent="SettingsBox"]
@@ -136,7 +191,7 @@ script = ExtResource("4_df1sw")
 [connection signal="toggled" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_toggled"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="mouse_exited" from="SettingsBox/VolumeSlider" to="SettingsBox/VolumeSlider" method="_on_mouse_exited"]
-[connection signal="value_changed" from="SettingsBox/VolumeSlider" to="SettingsBox/MuteButton" method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="SettingsBox/VolumeSlider" to="SettingsBox/VolumeSlider" method="_on_value_changed"]
-[connection signal="toggled" from="SettingsBox/MuteButton" to="SettingsBox/MuteButton" method="_on_toggled"]
+[connection signal="value_changed" from="SettingsBox/VolumeSlider" to="SettingsBox/MuteButton" method="_on_volume_slider_value_changed"]
 [connection signal="toggled" from="SettingsBox/MuteButton" to="SettingsBox/VolumeSlider" method="_on_mute_button_toggled"]
+[connection signal="toggled" from="SettingsBox/MuteButton" to="SettingsBox/MuteButton" method="_on_toggled"]

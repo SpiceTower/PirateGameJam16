@@ -20,6 +20,7 @@ func _ready() -> void:
 	detector.boss_death.connect(win_the_game)
 	detector.evil_throw.connect(evil_ball)
 	dialog_box.visible_ratio = 0.0
+	$B411/LifeLabel.text = str("x",$B411.get_lives())
 
 func bricks_remaining():
 	total_bricks = total_bricks - 1
@@ -36,13 +37,28 @@ func bricks_remaining():
 		end_level_bricks()
 
 func end_level_bricks():
-	dialog_box.text = "You penniless fools thought this advanced program and special B411 title meant something? Your arrogance and belief in a ‘greater good’ are your downfall. Be awed by the brilliance of my grand victory!"
+	dialog_box.text = "It's OVER for you, har har har!"
 	yap()
 	#detector.talk_trigger.emit("lvl three bricks")
+
+func _on_b_411_game_over():
+	dialog_box.text = "You penniless fools thought this advanced program and special B411 title meant something? Your arrogance and belief in a ‘greater good’ are your downfall. Be awed by the brilliance of my grand victory!"
+	yap()
+	$B411.ball_speed = 0
+	$CanvasLayer/Curtains.show()
+	await get_tree().create_timer(6.0).timeout
+	$AnimationPlayer.play("fade")
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	
+
 func win_the_game():
 	dialog_box.text = "I can’t believe it! Your idealism doesn’t generate profit. Your compassion doesn’t bring new investors. How? How could this happen? UGHHHH."
 	yap()
+	$B411.ball_speed = 0
+	$CanvasLayer/Curtains.show()
+	await get_tree().create_timer(5.0).timeout
+	$AnimationPlayer.play("fade")
+	get_tree().change_scene_to_file("res://Scenes/funeral.tscn")
 	#detector.talk_trigger.emit("Win The Game")
 
 func evil_ball():
@@ -54,6 +70,9 @@ func evil_ball():
 	if evil_balls_thrown == 4:
 		#detector.talk_trigger.emit("evil ball thrown")
 		evil_balls_thrown = 1
+
+func _process(delta):
+	$B411/LifeLabel.text = str("x",$B411.get_lives())
 
 func yap():
 	text_duration = dialog_box.text.length() / 30.0

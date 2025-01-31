@@ -14,7 +14,7 @@ func _process(delta):
 	pass
 
 func reset_bgp():
-	lives = 0
+	lives = 1
 	rebel1 = false
 	rebel2 = false
 

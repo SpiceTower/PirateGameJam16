@@ -5,6 +5,7 @@ class_name Ball
 signal life_start #resets music
 signal life_lost #connected to the death_zone node
 signal paddle_hit
+signal game_over
 
 const VELOCITY_MIN = 10 #The lower bound for the speed of the ball
 const VELOCITY_MAX = 40 #The upper bound for speed of the ball
@@ -27,6 +28,7 @@ var player_control : bool = false
 
 
 func _ready():
+	lives = BackgroundProcess.get_lives()
 	ui.set_lives(lives)
 	start_postion = position
 	death_zone.life_lost.connect(on_life_lost)
@@ -104,8 +106,8 @@ func min_velocity_check():
 
 func on_life_lost():
 	lives -= 1
-	if lives == 0 :
-		ui.game_over()
+	if lives < 0 :
+		game_over.emit()
 	else:
 		life_lost.emit()
 		ui.set_lives(lives)
@@ -195,3 +197,7 @@ func ball_collision(collision, collider):
 func _on_timer_timeout():
 	sprite_2d.set_frame(0)
 	boost_ready = true # Replace with function body.
+
+func get_lives():
+	return lives
+	
