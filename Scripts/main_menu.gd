@@ -7,6 +7,7 @@ func _ready():
 	#var grp = ButtonGroup.new()
 	#$VBoxContainer/SettingsButton.group = grp
 	#$VBoxContainer/CreditsButton.group = grp
+	BackgroundProcess.reset_bgp()
 	
 
 func _process(delta):

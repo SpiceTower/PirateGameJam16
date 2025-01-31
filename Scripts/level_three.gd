@@ -20,6 +20,7 @@ func _ready() -> void:
 	detector.boss_death.connect(win_the_game)
 	detector.evil_throw.connect(evil_ball)
 	dialog_box.visible_ratio = 0.0
+	$CanvasLayer/Curtains.hide()
 	$B411/LifeLabel.text = str("x",$B411.get_lives())
 
 func bricks_remaining():
@@ -46,7 +47,7 @@ func _on_b_411_game_over():
 	yap()
 	$B411.ball_speed = 0
 	$CanvasLayer/Curtains.show()
-	await get_tree().create_timer(6.0).timeout
+	await get_tree().create_timer(8.0).timeout
 	$AnimationPlayer.play("fade")
 	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 	

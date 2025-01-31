@@ -25,6 +25,5 @@ func send_him_off():
 
 func _on_shades_timer_timeout():
 	$AudioStreamPlayer2.play()
-	$AnimatedSprite2D.play("stop")
 	await get_tree().create_timer(3.0).timeout
 	get_tree().change_scene_to_file("res://Scenes/true_end.tscn")

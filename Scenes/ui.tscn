@@ -1,7 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvu4ayn55v757"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_7dic1"]
-[ext_resource type="FontFile" uid="uid://8aimyrqujt60" path="res://Base Assets/droid-sans/DroidSans.ttf" id="2_k0o35"]
+
+[sub_resource type="FontFile" id="FontFile_ax7nj"]
+cache/0/42/0/ascent = 0.0
+cache/0/42/0/descent = 0.0
+cache/0/42/0/underline_position = 0.0
+cache/0/42/0/underline_thickness = 0.0
+cache/0/42/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwtja"]
 bg_color = Color(1, 0.207843, 0, 1)
@@ -27,7 +38,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("2_k0o35")
+theme_override_fonts/font = SubResource("FontFile_ax7nj")
 theme_override_font_sizes/font_size = 42
 text = "Lives: 3"
 
