@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cebjfyfut4tc"]
+[gd_scene load_steps=12 format=3 uid="uid://cebjfyfut4tc"]
 
 [ext_resource type="Shader" path="res://Base Assets/Shaders/pause_menu.gdshader" id="1_hafag"]
 [ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_k3bfx"]
+[ext_resource type="FontFile" uid="uid://bu0pyi400q74v" path="res://Base Assets/Text/Jersey15-Regular.ttf" id="3_04t4g"]
 [ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="3_njpab"]
 [ext_resource type="Script" path="res://Scripts/mute_button.gd" id="4_ht6et"]
 
@@ -9,23 +10,11 @@
 shader = ExtResource("1_hafag")
 shader_parameter/lod = 0.0
 
-[sub_resource type="FontFile" id="FontFile_ol2vj"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/32/0/ascent = 0.0
-cache/0/32/0/descent = 0.0
-cache/0/32/0/underline_position = 0.0
-cache/0/32/0/underline_thickness = 0.0
-cache/0/32/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
+[sub_resource type="Theme" id="Theme_d8y2k"]
+default_font = ExtResource("3_04t4g")
+default_font_size = 22
 
 [sub_resource type="LabelSettings" id="LabelSettings_c8k34"]
-font = SubResource("FontFile_ol2vj")
 font_size = 32
 
 [sub_resource type="Animation" id="Animation_mrbc7"]
@@ -185,6 +174,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_d8y2k")
 text = "Paused"
 label_settings = SubResource("LabelSettings_c8k34")
 horizontal_alignment = 1

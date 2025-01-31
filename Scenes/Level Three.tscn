@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://Scripts/bounce_sound.gd" id="22_6ch1i"]
 [ext_resource type="Script" path="res://Scripts/Brick Spawner.gd" id="23_hde4i"]
 [ext_resource type="PackedScene" uid="uid://cc1uwdntbwiol" path="res://Scenes/brick.tscn" id="24_hbx22"]
+[ext_resource type="FontFile" uid="uid://bu0pyi400q74v" path="res://Base Assets/Text/Jersey15-Regular.ttf" id="26_ggrfe"]
 [ext_resource type="PackedScene" uid="uid://cebjfyfut4tc" path="res://Scenes/pause_menu.tscn" id="26_x4vns"]
 [ext_resource type="AudioStream" uid="uid://fpum1emjn1qf" path="res://Sound/Cluster's Last Strand.mp3" id="27_0544f"]
 [ext_resource type="Script" path="res://Scripts/level_three_music.gd" id="28_w07wu"]
@@ -86,20 +87,8 @@ clip_15/name = &"G#5"
 clip_15/stream = ExtResource("13_7hcfa")
 clip_15/auto_advance = 0
 
-[sub_resource type="FontFile" id="FontFile_dhcss"]
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
 [sub_resource type="Theme" id="Theme_17un6"]
-default_font = SubResource("FontFile_dhcss")
+default_font = ExtResource("26_ggrfe")
 default_font_size = 20
 
 [sub_resource type="Animation" id="Animation_qqw1e"]

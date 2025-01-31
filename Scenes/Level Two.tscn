@@ -35,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://7a5itgdscgxd" path="res://Sound/B.411's Treachery.mp3" id="30_hiofq"]
 [ext_resource type="PackedScene" uid="uid://bav7cqu6xjtn0" path="res://Scenes/Military_Brick.tscn" id="30_lp3oy"]
 [ext_resource type="PackedScene" uid="uid://bndjanvlw6c1l" path="res://Scenes/Shield.tscn" id="31_qqyhq"]
+[ext_resource type="FontFile" uid="uid://bu0pyi400q74v" path="res://Base Assets/Text/Jersey15-Regular.ttf" id="31_x5kes"]
 [ext_resource type="Script" path="res://Scripts/level_two_music.gd" id="33_stiwv"]
 [ext_resource type="PackedScene" uid="uid://opnquw31g6jp" path="res://Scenes/Talking Boss.tscn" id="36_paw7m"]
 [ext_resource type="PackedScene" uid="uid://cdrlvwdm7w7kv" path="res://Scenes/Text Box.tscn" id="38_smcdp"]
@@ -99,20 +100,8 @@ clip_18/name = &"G#6"
 clip_18/stream = ExtResource("16_8ck40")
 clip_18/auto_advance = 0
 
-[sub_resource type="FontFile" id="FontFile_smsds"]
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
 [sub_resource type="Theme" id="Theme_j62di"]
-default_font = SubResource("FontFile_smsds")
+default_font = ExtResource("31_x5kes")
 default_font_size = 20
 
 [sub_resource type="Animation" id="Animation_qqw1e"]
