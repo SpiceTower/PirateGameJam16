@@ -27,14 +27,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = 173.0
-offset_right = 47.0
-offset_bottom = 173.0
+offset_left = 41.0
+offset_top = 166.0
+offset_right = 41.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.15953, 0.172188)
-color = Color(0.286275, 0.431373, 0.211765, 1)
+scale = Vector2(0.174763, 0.19221)
+color = Color(0.690196, 0.0705882, 0.0392157, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.3321
+offset_top = 31.2159
+offset_right = 5915.33
+offset_bottom = 3295.22
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.154865, 0.150224)
+color = Color(0.866667, 0.0980392, 0.113725, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
@@ -42,14 +56,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 394.0
-offset_right = 8.0
-offset_bottom = 394.0
+offset_left = 5.0
+offset_top = 389.0
+offset_right = 5.0
+offset_bottom = 389.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.131691, 0.172188)
-color = Color(0.286275, 0.431373, 0.211765, 1)
+scale = Vector2(0.144944, 0.195852)
+color = Color(0.690196, 0.0705882, 0.0392157, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.4961
+offset_top = 30.6353
+offset_right = 34.4961
+offset_bottom = 30.6353
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.924435, 0.899244)
+color = Color(0.866667, 0.0980392, 0.113725, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 visible = false
@@ -57,14 +85,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 981.0
-offset_top = 22.0
-offset_right = 981.0
-offset_bottom = 22.0
+offset_left = 969.0
+offset_top = 16.0
+offset_right = 969.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.124937, 0.921113)
-color = Color(0.286275, 0.431373, 0.211765, 1)
+scale = Vector2(0.141737, 0.940298)
+color = Color(0.690196, 0.0705882, 0.0392157, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.4426
+offset_top = 6.38095
+offset_right = 56.4425
+offset_bottom = 6.38098
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.906606, 0.97405)
+color = Color(0.866667, 0.0980392, 0.113725, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

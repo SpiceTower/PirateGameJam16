@@ -19,6 +19,7 @@ func _ready() -> void:
 	detector.button_press.connect(end_level_button)
 	detector.generator_destroyed.connect(generators_remaining)
 	dialog_box.visible_ratio = 0.0
+	$CanvasLayer/Curtains.hide()
 
 func bricks_remaining():
 	total_bricks = total_bricks - 1
