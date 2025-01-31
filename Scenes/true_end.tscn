@@ -105,7 +105,7 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_mpkjo")
-volume_db = -3.0
+volume_db = -12.0
 
 [node name="Label" type="Label" parent="."]
 offset_right = 1150.0
